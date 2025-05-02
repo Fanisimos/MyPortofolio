@@ -1,0 +1,201 @@
+/* General Styles */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open Sans", sans-serif; /* Professional font */
+  background: linear-gradient(135deg, #f4f4f4, #e6e6e6); /* Subtle gradient */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+button {
+  text-decoration: none;
+  color: #0066cc; /* Blue*/
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  color: #16f1be; /* Light green */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+button.active {
+  background-color: #0066cc;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Updated Header for Full-Width Banner */
+header {
+  background: linear-gradient(
+    135deg,
+    #004080,
+    #0066cc
+  ); /* Professional gradient */
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure full width */
+}
+
+header h1 {
+  font-size: 2.8em;
+  color: #ffffff; /* White text for contrast */
+  margin: 0;
+  font-weight: bold;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li button {
+  font-size: 1.1em;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li button:hover {
+  background-color: #ffffff; /*White*/
+}
+
+/* Sections */
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2em;
+  color: #1678f1; /* Dark Blue */
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1678f1;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+section p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.section-dark {
+  background-color: #16f1be; /* Light green */
+  color: #333;
+}
+
+/* Portpfolio Grid */
+.portofolio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.portofolio-item {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  width: calc(33.333% - 20px);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portofolio-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.portofolio-item img {
+  width: 100%;
+  height: auto;
+  border-bottom: 3px solid #e6f7ff;
+}
+
+.portofolio-item h3 {
+  margin: 15px;
+  font-size: 1.6em;
+  color: #007acc;
+}
+
+.portofolio-item p {
+  margin: 0 15px 15px;
+  color: #666;
+}
+
+/* Updated Footer */
+footer {
+  background-color: #004080; /* Professional dark blue */
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 1.1em;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer button {
+  color: #b3d9ff; /* Light blue links */
+  font-weight: bold;
+}
+
+footer button:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Updated Buttons */
+.button {
+  background: linear-gradient(
+    135deg,
+    #004080,
+    #0066cc
+  ); /* Professional gradient */
+  color: rgb(255, 255, 255);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: #003366; /* Darker hover effect */
+  transform: scale(1.1);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .portofolio-item {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .portofolio-item {
+    width: 100%;
+  }
+}
