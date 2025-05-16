@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Open Sans", sans-serif; /* Professional font */
+  font-family: "Helvetica Neue", sans-serif; /* Professional font */
   background: linear-gradient(135deg, #f4f4f4, #e6e6e6); /* Subtle gradient */
   color: #333;
   margin: 0;
@@ -76,6 +76,7 @@ nav ul li button {
 
 nav ul li button:hover {
   background-color: #ffffff; /*White*/
+  color: #16f1be; /* Dark blue */
 }
 
 /* Sections */
@@ -170,7 +171,7 @@ footer button:hover {
 .button {
   background: linear-gradient(
     135deg,
-    #004080,
+    rgb(8, 84, 160),
     #0066cc
   ); /* Professional gradient */
   color: rgb(255, 255, 255);

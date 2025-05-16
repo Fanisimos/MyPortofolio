@@ -6,24 +6,30 @@ function Header({ onNavClick, activeSection }) {
       <h1>Welcome To My Portfolio</h1>
       <nav>
         <ul>
-          <Button
-            onClick={() => onNavClick("about")}
-            isActive={activeSection === "about"}
-          >
-            About
-          </Button>
-          <Button
-            onClick={() => onNavClick("portofolio")}
-            isActive={activeSection === "portofolio"}
-          >
-            Projects
-          </Button>
-          <Button
-            onClick={() => onNavClick("contact")}
-            isActive={activeSection === "contact"}
-          >
-            Contact
-          </Button>
+          <li>
+            <Button
+              onClick={() => onNavClick("portofolio")}
+              isActive={activeSection === "portofolio"}
+            >
+              Portofolio
+            </Button>
+          </li>
+          <li>
+            <Button
+              onClick={() => onNavClick("contact")}
+              isActive={activeSection === "contact"}
+            >
+              Contact
+            </Button>
+          </li>
+          <li>
+            <Button
+              onClick={() => onNavClick("about")}
+              isActive={activeSection === "about"}
+            >
+              About
+            </Button>
+          </li>
         </ul>
       </nav>
     </header>

@@ -6,7 +6,11 @@ function Portofolio() {
       <h2>My Projects</h2>
       <div className="portofolio">
         {portofolioItems.map((item) => (
-          <div className="portofolio-item" key={item.id} onClick={item.link}>
+          <div
+            className="portofolio-item"
+            key={item.id}
+            onClick={() => item.link} // has to be a function, because of onClick
+          >
             <a href={item.link} target="_blank" rel="noopener noreferrer">
               <img src={item.image} alt={item.title} />
               <h3>{item.title}</h3>
