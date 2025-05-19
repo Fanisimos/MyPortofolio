@@ -3,7 +3,7 @@ import { Button } from "./Button.jsx";
 function Header({ onNavClick, activeSection }) {
   return (
     <header>
-      <h1>Welcome To My Portfolio</h1>
+      <h1>💻 Welcome To My Portfolio ☕</h1>
       <nav>
         <ul>
           <li>
