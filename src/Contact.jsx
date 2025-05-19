@@ -1,10 +1,12 @@
 function Contact() {
   return (
-    <div>
+    <section className="contact-section">
       <h2>Contact Me</h2>
-      <p>If you would like to get in touch, please reach out via email at </p>
-      <a href="mailto:Xspot1995@hotmail.com">Xspot1995@hotmail.com</a>
-    </div>
+      <p>If you’d like to get in touch, feel free to reach out via email:</p>
+      <a className="contact-link" href="mailto:Xspot1995@hotmail.com">
+        Xspot1995@hotmail.com
+      </a>
+    </section>
   );
 }
 

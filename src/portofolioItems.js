@@ -9,28 +9,28 @@ const portofolioItems = [
     title: "FarAway",
     description: "A travel planning app to organize your trips.",
     image: FarAway,
-    link: "https://example.com/faraway",
+    link: "https://tzoni-thefaraway.netlify.app/",
   },
   {
     id: 2,
     title: "Forkify",
     description: "A recipe search app with thousands of recipes.",
     image: Forkify,
-    link: "https://example.com/forkify",
+    link: "https://forkify-tzoni.netlify.app/",
   },
   {
     id: 3,
     title: "Mapty",
     description: "A map-based workout tracking app.",
     image: Mapty,
-    link: "https://example.com/mapty",
+    link: "https://tzoni-mapty-v2-yourworkoutapp.netlify.app/",
   },
   {
     id: 4,
     title: "Plumbing by Armando",
     description: "A portfolio website for a plumbing business.",
     image: PlumbingbyArmando,
-    link: "https://example.com/plumbing",
+    link: "https://plumbingbyarmando.com/",
   },
 ];
 

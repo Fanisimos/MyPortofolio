@@ -1,44 +1,127 @@
+header {
+  background: linear-gradient(135deg, #004080, #0066cc);
+  padding: 40px 0;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
+header h1 {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+}
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+nav ul li button {
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+nav ul li button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+section {
+  padding: 80px 20px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+section h2 {
+  font-size: 2.5rem;
+  color: #0066cc;
+  margin-bottom: 40px;
+  position: relative;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #16f1be;
+  margin: 20px auto 0;
+  border-radius: 2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+section p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #555;
+}
+.portofolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
 }
 
-.card {
-  padding: 2em;
+.portofolio-item {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.portofolio-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.portofolio-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.portofolio-item h3 {
+  margin: 20px 0 10px;
+  color: #0066cc;
+}
+
+.portofolio-item p {
+  color: #666;
+  margin: 0 20px 20px;
+}
+.button {
+  background: linear-gradient(135deg, #0066cc, #004080);
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.button:hover {
+  background: #003366;
+  transform: scale(1.05);
+}
+footer {
+  background: #004080;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0;
+  margin-top: 60px;
+}
+
+footer p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
