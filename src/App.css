@@ -44,7 +44,7 @@ nav ul {
 nav ul li button {
   background: transparent;
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 10px 20px;
   border-radius: 30px;
   transition: background 0.3s ease;
@@ -130,6 +130,69 @@ section p {
   background: #003366;
   transform: scale(1.05);
 }
+
+.ps-note {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+  margin-top: 20px;
+}
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tech-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tech-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.tech-item p {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+/* Optional: Responsive Adjustments */
+@media (max-width: 480px) {
+  .tech-item {
+    width: 80px;
+  }
+
+  .tech-item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tech-item p {
+    font-size: 0.9rem;
+  }
+}
+
 footer {
   background: #004080;
   color: #fff;

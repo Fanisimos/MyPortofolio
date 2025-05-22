@@ -29,6 +29,12 @@ function Header({ onNavClick, activeSection }) {
             >
               About
             </Button>
+            <Button
+              onClick={() => onNavClick("skills")}
+              isActive={activeSection === "skills"}
+            >
+              Skills
+            </Button>
           </li>
         </ul>
       </nav>

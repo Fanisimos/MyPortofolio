@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Contact from "./Contact";
 import About from "./About";
+import TechStack from "./TechStack";
 import "./App.css";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       {activeSection === "about" && <About />}
       {activeSection === "portofolio" && <Portofolio />}
       {activeSection === "contact" && <Contact />}
+      {activeSection === "skills" && <TechStack />}
       <Footer />
     </div>
   );

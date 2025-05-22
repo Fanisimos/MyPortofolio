@@ -3,7 +3,7 @@ import portofolioItems from "./portofolioItems.js";
 function Portofolio() {
   return (
     <section id="portofolio">
-      <h2>My Projects</h2>
+      <h2>Projects</h2>
       <div className="portofolio">
         {portofolioItems.map((item) => (
           <div
