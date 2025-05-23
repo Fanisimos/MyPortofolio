@@ -13,10 +13,12 @@ const App = () => {
   return (
     <div>
       <Header onNavClick={setActiveSection} activeSection={activeSection} />
-      {activeSection === "about" && <About />}
-      {activeSection === "portofolio" && <Portofolio />}
-      {activeSection === "contact" && <Contact />}
-      {activeSection === "skills" && <TechStack />}
+      <div key={activeSection} className="fade-in">
+        {activeSection === "about" && <About />}
+        {activeSection === "portofolio" && <Portofolio />}
+        {activeSection === "contact" && <Contact />}
+        {activeSection === "skills" && <TechStack />}
+      </div>
       <Footer />
     </div>
   );

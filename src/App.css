@@ -49,6 +49,15 @@ nav ul li button {
   border-radius: 30px;
   transition: background 0.3s ease;
 }
+/* Highlight the active tab */
+nav ul li button.active,
+nav ul li button.is-active {
+  background: rgba(255, 255, 255, 0.681);
+  color: #004080;
+  font-weight: bold;
+  box-shadow: 0 0 8px #16f1be55;
+  transition: background 0.5s, color 0.5s;
+}
 
 nav ul li button:hover {
   background: rgba(255, 255, 255, 0.2);
@@ -71,7 +80,7 @@ section h2::after {
   display: block;
   width: 60px;
   height: 4px;
-  background: #16f1be;
+  background: #d1dedb;
   margin: 20px auto 0;
   border-radius: 2px;
 }
@@ -81,6 +90,18 @@ section p {
   max-width: 700px;
   margin: 0 auto 40px;
   color: #555;
+}
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .portofolio {
   display: grid;

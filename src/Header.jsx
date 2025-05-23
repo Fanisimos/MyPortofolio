@@ -8,7 +8,17 @@ function Header({ onNavClick, activeSection }) {
         <ul>
           <li>
             <Button
+              onClick={() => onNavClick("about")}
+              className={activeSection === "about" ? "active" : ""}
+              isActive={activeSection === "about"}
+            >
+              About
+            </Button>
+          </li>
+          <li>
+            <Button
               onClick={() => onNavClick("portofolio")}
+              className={activeSection === "portofolio" ? "active" : ""}
               isActive={activeSection === "portofolio"}
             >
               Portofolio
@@ -17,20 +27,17 @@ function Header({ onNavClick, activeSection }) {
           <li>
             <Button
               onClick={() => onNavClick("contact")}
+              className={activeSection === "contact" ? "active" : ""}
               isActive={activeSection === "contact"}
             >
               Contact
             </Button>
           </li>
+
           <li>
             <Button
-              onClick={() => onNavClick("about")}
-              isActive={activeSection === "about"}
-            >
-              About
-            </Button>
-            <Button
               onClick={() => onNavClick("skills")}
+              className={activeSection === "skills" ? "active" : ""}
               isActive={activeSection === "skills"}
             >
               Skills
