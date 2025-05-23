@@ -24,8 +24,8 @@ You’ll find:
 ## 🚀 How to Run It Locally
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/Fanisimos/MyPortofolio.git
+cd myPortofolio
 npm install
 npm run dev
 
