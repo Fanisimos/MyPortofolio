@@ -46,7 +46,7 @@ function Timer() {
 
   return (
     <div className="timer-container">
-      <h2>Countdown Timer</h2>
+      <div className="timer-title">Countdown Timer</div>
       <div className="timer-input-row">
         <input
           type="number"

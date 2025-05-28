@@ -1,0 +1,87 @@
+/* DarkMode Component Styles - matches Timer.css theme */
+.darkmode-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  margin: 40px auto;
+  padding: 32px 24px 28px 24px;
+  text-align: center;
+}
+
+.darkmode-title {
+  font-size: 1.5rem;
+  color: #16f1be;
+  font-family: "Orbitron", "Roboto Mono", monospace;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+  background: linear-gradient(90deg, #16f1be 30%, #0066cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.darkmode-toggle-container {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.darkmode-toggle.button {
+  background: linear-gradient(135deg, #0066cc, #16f1be);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.08);
+  transition: background 0.3s, transform 0.2s;
+  min-width: 140px;
+}
+
+.darkmode-toggle.button:hover {
+  background: linear-gradient(135deg, #004080, #16f1be);
+  transform: scale(1.07);
+}
+
+/* Dark theme styles */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --card-bg: #2d2d2d;
+  --border-color: #404040;
+}
+
+[data-theme="light"] {
+  --bg-color: #f0f8ff;
+  --text-color: #333333;
+  --card-bg: #ffffff;
+  --border-color: #b3d9ff;
+}
+
+/* Apply theme variables */
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .darkmode-container,
+[data-theme="dark"] .timer-container {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .timer-input {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .timer-display {
+  background: #404040;
+  color: #16f1be;
+}

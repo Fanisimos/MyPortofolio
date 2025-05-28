@@ -138,6 +138,7 @@ section p {
   color: #666;
   margin: 0 20px 20px;
 }
+
 .button {
   background: linear-gradient(135deg, #0066cc, #004080);
   color: #fff;
@@ -211,6 +212,36 @@ section p {
 
   .tech-item p {
     font-size: 0.9rem;
+  }
+}
+
+/* Portfolio grid responsive adjustments */
+@media (max-width: 768px) {
+  .portofolio {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+}
+
+/* Components showcase layout - different from portfolio grid */
+.components-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive: horizontal layout on larger screens */
+@media (min-width: 900px) {
+  .components-showcase {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
   }
 }
 

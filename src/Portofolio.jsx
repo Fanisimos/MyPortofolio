@@ -1,5 +1,7 @@
 import portofolioItems from "./portofolioItems.js";
 import Timer from "./showcaseComponents/Timer.jsx";
+import DarkMode from "./showcaseComponents/DarkMode.jsx";
+import Progress from "./showcaseComponents/Progress.jsx";
 
 function Portofolio() {
   return (
@@ -21,12 +23,20 @@ function Portofolio() {
             </div>
           ))}
         </div>
-      </section>
-      {/*FIXME: How to add the components?*/}
-      <section id="portofolio">
+      </section>{" "}
+      <section id="components">
         <h2>Components</h2>
-        <Timer />
-        <div className="portofolio"> </div>
+        <div className="components-showcase">
+          <div className="component-wrapper">
+            <Timer />
+          </div>
+          <div className="component-wrapper">
+            <DarkMode />
+          </div>
+          <div className="component-wrapper">
+            <Progress />
+          </div>
+        </div>
       </section>
     </>
   );

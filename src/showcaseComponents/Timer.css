@@ -2,11 +2,25 @@
 .timer-container {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   max-width: 350px;
   margin: 40px auto;
   padding: 32px 24px 28px 24px;
   text-align: center;
+}
+
+.timer-title {
+  font-size: 1.5rem;
+  color: #16f1be;
+  font-family: "Orbitron", "Roboto Mono", monospace;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+  background: linear-gradient(90deg, #16f1be 30%, #0066cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .timer-container h2 {
@@ -46,14 +60,14 @@
 
 .timer-display {
   font-size: 2.5rem;
-  font-family: 'Orbitron', 'Roboto Mono', monospace;
+  font-family: "Orbitron", "Roboto Mono", monospace;
   color: #004080;
   background: #e6f7ff;
   border-radius: 10px;
   padding: 16px 0;
   margin-bottom: 24px;
   letter-spacing: 2px;
-  box-shadow: 0 2px 8px rgba(0,102,204,0.07);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.07);
 }
 
 .timer-buttons {
@@ -71,7 +85,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,102,204,0.08);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.08);
   transition: background 0.3s, transform 0.2s;
 }
 
