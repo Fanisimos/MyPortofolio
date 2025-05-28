@@ -1,4 +1,5 @@
 import portofolioItems from "./portofolioItems.js";
+import Timer from "./showcaseComponents/Timer.jsx";
 
 function Portofolio() {
   return (
@@ -24,6 +25,7 @@ function Portofolio() {
       {/*FIXME: How to add the components?*/}
       <section id="portofolio">
         <h2>Components</h2>
+        <Timer />
         <div className="portofolio"> </div>
       </section>
     </>
