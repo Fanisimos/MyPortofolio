@@ -1,9 +1,28 @@
 import { Button } from "./Button.jsx";
+import { Box } from "@mui/material";
+import "./Header.css";
+import logo from "./assets/logo.png";
 
 function Header({ onNavClick, activeSection }) {
   return (
     <header>
-      <h1>💻 Welcome To My Portfolio ☕</h1>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img
+          src={logo}
+          alt="logo"
+          className="img-header"
+          id="pictureReversed"
+        />
+        <h1>Welcome To My Portfolio</h1>
+        <img src={logo} alt="logo" className="img-header" />
+      </Box>
       <nav>
         <ul>
           <li>
