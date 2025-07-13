@@ -36,7 +36,13 @@ function Header({ onNavClick, activeSection }) {
       id: "about",
       label: "About",
       icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          style={{ transform: "translate(-3px, 3px)" }}
+        >
           <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
         </svg>
       ),
@@ -45,7 +51,13 @@ function Header({ onNavClick, activeSection }) {
       id: "portfolio",
       label: "Portfolio",
       icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          style={{ transform: "translate(-3px, 3px)" }}
+        >
           <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
         </svg>
       ),
@@ -54,7 +66,13 @@ function Header({ onNavClick, activeSection }) {
       id: "skills",
       label: "Skills",
       icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          style={{ transform: "translate(-3px, 3px)" }}
+        >
           <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
         </svg>
       ),
@@ -63,7 +81,13 @@ function Header({ onNavClick, activeSection }) {
       id: "contact",
       label: "Contact",
       icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          style={{ transform: "translate(-3px, 3px)" }}
+        >
           <path d="M20,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6A2,2 0 0,0 20,4M20,18H4V8L12,13L20,8V18M20,6L12,11L4,6V6H20V6Z" />
         </svg>
       ),
@@ -112,7 +136,9 @@ function Header({ onNavClick, activeSection }) {
           {/* Mobile Menu Button */}
           {isMobile && (
             <button
-              className={`mobile-menu-toggle ${isMobileMenuOpen ? "mobile-menu-toggle--open" : ""}`}
+              className={`mobile-menu-toggle ${
+                isMobileMenuOpen ? "mobile-menu-toggle--open" : ""
+              }`}
               onClick={toggleMobileMenu}
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle navigation menu"
@@ -125,7 +151,9 @@ function Header({ onNavClick, activeSection }) {
 
           {/* Navigation List */}
           <ul
-            className={`header__nav-list ${isMobileMenuOpen ? "header__nav-list--open" : ""}`}
+            className={`header__nav-list ${
+              isMobileMenuOpen ? "header__nav-list--open" : ""
+            }`}
           >
             {navigationItems.map((item, index) => (
               <li key={item.id} className="header__nav-item">
