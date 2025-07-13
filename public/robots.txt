@@ -1,0 +1,51 @@
+# robots.txt for John Litsai Portfolio
+# https://johnlitsai.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://johnlitsai.dev/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Block sensitive areas (if any)
+Disallow: /private/
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.js.map$
+Disallow: /*.css.map$
+
+# Allow important files
+Allow: /favicon.ico
+Allow: /logo.png
+Allow: /site.webmanifest
+Allow: /sw.js
+
+# Popular search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Block image hotlinking from unauthorized sources
+User-agent: *
+Disallow: /assets/images/
+Allow: /assets/images/

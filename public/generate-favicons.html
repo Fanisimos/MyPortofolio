@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Generator - John Litsai Portfolio</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .preview-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .preview-item canvas {
+            border: 1px solid #ddd;
+            margin-bottom: 8px;
+        }
+        .preview-item label {
+            font-size: 12px;
+            color: #666;
+            display: block;
+        }
+        .controls {
+            margin: 20px 0;
+            text-align: center;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 0 10px;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .instructions h3 {
+            color: #0066cc;
+            margin-top: 0;
+        }
+        .status {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .success {
+            color: #4caf50;
+        }
+        .error {
+            color: #f44336;
+        }
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .color-item {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Favicon Generator</h1>
+        <p style="text-align: center; color: #666;">Generate professional favicons for your portfolio</p>
+
+        <div class="color-palette">
+            <div class="color-item" style="background: #0066cc;" title="Primary Blue"></div>
+            <div class="color-item" style="background: #16F1BE;" title="Mint Green"></div>
+            <div class="color-item" style="background: #FF6B6B;" title="Coral Red"></div>
+            <div class="color-item" style="background: #4ECDC4;" title="Turquoise"></div>
+            <div class="color-item" style="background: #FFE66D;" title="Golden Yellow"></div>
+            <div class="color-item" style="background: #A8E6CF;" title="Light Green"></div>
+        </div>
+
+        <div class="preview-grid" id="previewGrid"></div>
+
+        <div class="controls">
+            <button onclick="generateFavicons()">🚀 Generate Favicons</button>
+            <button onclick="downloadAll()" id="downloadBtn" disabled>📥 Download All</button>
+            <button onclick="copyInstructions()">📋 Copy Instructions</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div class="instructions">
+            <h3>📖 How to Use</h3>
+            <ol>
+                <li><strong>Generate:</strong> Click "Generate Favicons" to create all sizes</li>
+                <li><strong>Download:</strong> Right-click each favicon and "Save image as..." to your public/ folder</li>
+                <li><strong>Replace:</strong> Replace the existing favicon files in your project</li>
+                <li><strong>Test:</strong> Refresh your website and check the browser tab icon</li>
+            </ol>
+
+            <h3>🎯 File Names Needed</h3>
+            <ul>
+                <li><code>favicon.ico</code> - Main browser icon</li>
+                <li><code>favicon-16x16.png</code> - Small browser tab</li>
+                <li><code>favicon-32x32.png</code> - Standard browser tab</li>
+                <li><code>apple-touch-icon.png</code> - iOS home screen</li>
+                <li><code>android-chrome-192x192.png</code> - Android icon</li>
+                <li><code>android-chrome-512x512.png</code> - Android large icon</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const faviconSizes = [
+            { size: 16, name: 'favicon-16x16.png', type: 'browser' },
+            { size: 32, name: 'favicon-32x32.png', type: 'browser' },
+            { size: 48, name: 'favicon.ico', type: 'browser' },
+            { size: 180, name: 'apple-touch-icon.png', type: 'ios' },
+            { size: 192, name: 'android-chrome-192x192.png', type: 'android' },
+            { size: 512, name: 'android-chrome-512x512.png', type: 'android' }
+        ];
+
+        let generatedCanvases = [];
+
+        function createPreviewGrid() {
+            const grid = document.getElementById('previewGrid');
+            grid.innerHTML = '';
+
+            faviconSizes.forEach((config, index) => {
+                const item = document.createElement('div');
+                item.className = 'preview-item';
+
+                const canvas = document.createElement('canvas');
+                canvas.width = config.size;
+                canvas.height = config.size;
+                canvas.style.width = Math.min(config.size, 64) + 'px';
+                canvas.style.height = Math.min(config.size, 64) + 'px';
+                canvas.id = `canvas-${index}`;
+
+                const label = document.createElement('label');
+                label.textContent = `${config.size}×${config.size}\n${config.name}`;
+
+                item.appendChild(canvas);
+                item.appendChild(label);
+                grid.appendChild(item);
+            });
+        }
+
+        function drawFavicon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            const scale = size / 32; // Base design is 32x32
+
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+
+            if (size >= 48) {
+                // Detailed version for larger sizes
+                drawDetailedFavicon(ctx, size, scale);
+            } else {
+                // Simplified version for small sizes
+                drawSimpleFavicon(ctx, size, scale);
+            }
+        }
+
+        function drawDetailedFavicon(ctx, size, scale) {
+            // Background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, size, size);
+
+            // Rounded corners
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, 3 * scale);
+            ctx.clip();
+
+            // Code block lines
+            const lines = [
+                { x: 6, y: 5, w: 8, h: 2, color: '#3B82F6' },
+                { x: 16, y: 5, w: 10, h: 2, color: '#EF4444' },
+                { x: 4, y: 9, w: 12, h: 2, color: '#10B981' },
+                { x: 18, y: 9, w: 6, h: 2, color: '#F59E0B' },
+                { x: 8, y: 13, w: 6, h: 2, color: '#F97316' },
+                { x: 16, y: 13, w: 10, h: 2, color: '#8B5CF6' },
+                { x: 5, y: 17, w: 4, h: 2, color: '#06B6D4' },
+                { x: 11, y: 17, w: 8, h: 2, color: '#EC4899' },
+                { x: 21, y: 17, w: 6, h: 2, color: '#84CC16' },
+                { x: 4, y: 21, w: 14, h: 2, color: '#22C55E' },
+                { x: 20, y: 21, w: 8, h: 2, color: '#F43F5E' },
+                { x: 7, y: 25, w: 6, h: 2, color: '#A855F7' },
+                { x: 15, y: 25, w: 10, h: 2, color: '#EAB308' }
+            ];
+
+            lines.forEach(line => {
+                ctx.fillStyle = line.color;
+                ctx.beginPath();
+                ctx.roundRect(
+                    line.x * scale,
+                    line.y * scale,
+                    line.w * scale,
+                    line.h * scale,
+                    1 * scale
+                );
+                ctx.fill();
+            });
+        }
+
+        function drawSimpleFavicon(ctx, size, scale) {
+            // Blue background for small sizes
+            ctx.fillStyle = '#0066cc';
+            ctx.fillRect(0, 0, size, size);
+
+            // Rounded corners
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, 2 * scale);
+            ctx.clip();
+
+            // Simplified code lines
+            const lines = [
+                { x: 2, y: 2, w: 5, h: 1.5, color: '#16F1BE' },
+                { x: 9, y: 2, w: 5, h: 1.5, color: '#FF6B6B' },
+                { x: 1, y: 5, w: 7, h: 1.5, color: '#4ECDC4' },
+                { x: 10, y: 5, w: 4, h: 1.5, color: '#FFE66D' },
+                { x: 3, y: 8, w: 4, h: 1.5, color: '#FF9F43' },
+                { x: 9, y: 8, w: 6, h: 1.5, color: '#A8E6CF' },
+                { x: 1, y: 11, w: 8, h: 1.5, color: '#FF8A80' },
+                { x: 11, y: 11, w: 4, h: 1.5, color: '#B39DDB' },
+                { x: 4, y: 14, w: 8, h: 1.5, color: '#81C784' }
+            ];
+
+            lines.forEach(line => {
+                ctx.fillStyle = line.color;
+                ctx.beginPath();
+                ctx.roundRect(
+                    line.x * scale * 2,
+                    line.y * scale * 2,
+                    line.w * scale * 2,
+                    line.h * scale * 2,
+                    0.5 * scale * 2
+                );
+                ctx.fill();
+            });
+        }
+
+        // Polyfill for roundRect if not supported
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.arcTo(x + width, y, x + width, y + radius, radius);
+                this.lineTo(x + width, y + height - radius);
+                this.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+                this.lineTo(x + radius, y + height);
+                this.arcTo(x, y + height, x, y + height - radius, radius);
+                this.lineTo(x, y + radius);
+                this.arcTo(x, y, x + radius, y, radius);
+                this.closePath();
+            };
+        }
+
+        function generateFavicons() {
+            const status = document.getElementById('status');
+            status.textContent = '🎨 Generating favicons...';
+            status.className = 'status';
+
+            generatedCanvases = [];
+
+            try {
+                faviconSizes.forEach((config, index) => {
+                    const canvas = document.getElementById(`canvas-${index}`);
+                    drawFavicon(canvas, config.size);
+                    generatedCanvases.push({ canvas, config });
+                });
+
+                status.textContent = '✅ Favicons generated successfully!';
+                status.className = 'status success';
+                document.getElementById('downloadBtn').disabled = false;
+            } catch (error) {
+                status.textContent = '❌ Error generating favicons: ' + error.message;
+                status.className = 'status error';
+            }
+        }
+
+        function downloadAll() {
+            generatedCanvases.forEach(({ canvas, config }) => {
+                const link = document.createElement('a');
+                link.download = config.name;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        function copyInstructions() {
+            const instructions = `
+Favicon Setup Instructions:
+
+1. Save each favicon with the correct filename:
+   - favicon-16x16.png
+   - favicon-32x32.png
+   - favicon.ico (save the 48x48 version as PNG, rename to .ico)
+   - apple-touch-icon.png
+   - android-chrome-192x192.png
+   - android-chrome-512x512.png
+
+2. Replace the files in your public/ folder
+
+3. Clear browser cache and refresh your site
+
+4. Test the favicon appears in:
+   - Browser tabs
+   - Bookmarks
+   - Mobile home screen (when added)
+
+Your favicon is now updated with your developer branding! 🚀
+            `;
+
+            navigator.clipboard.writeText(instructions).then(() => {
+                alert('Instructions copied to clipboard!');
+            }).catch(() => {
+                alert('Please manually copy the instructions from the page');
+            });
+        }
+
+        // Initialize the preview grid
+        createPreviewGrid();
+
+        // Auto-generate on page load
+        setTimeout(generateFavicons, 500);
+    </script>
+</body>
+</html>

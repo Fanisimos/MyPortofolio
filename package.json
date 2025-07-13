@@ -7,8 +7,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:optimized": "node scripts/build-optimized.js",
+    "build:analyze": "node scripts/build-optimized.js --analyze",
+    "build:preview": "node scripts/build-optimized.js --preview",
+    "generate:favicons": "node scripts/generate-favicons.js",
+    "create:favicons": "node scripts/create-favicons.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "npm run dev",
+    "serve": "npm run preview"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -31,6 +38,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",
+    "terser": "^5.19.4",
     "vite": "^6.3.4"
   }
 }

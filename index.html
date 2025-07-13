@@ -53,7 +53,11 @@
         <meta name="twitter:creator" content="@johnlitsai" />
 
         <!-- Favicon and Icons -->
+        <!-- Modern SVG favicon for vector scalability -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <!-- Fallback ICO for older browsers -->
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <!-- PNG favicons for specific sizes -->
         <link
             rel="icon"
             type="image/png"
@@ -71,10 +75,14 @@
             sizes="180x180"
             href="/apple-touch-icon.png"
         />
+        <!-- Web App Manifest for PWA -->
         <link rel="manifest" href="/site.webmanifest" />
+        <!-- Theme colors for different platforms -->
         <meta name="theme-color" content="#0066cc" />
         <meta name="msapplication-TileColor" content="#0066cc" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        <!-- Safari pinned tab icon -->
+        <link rel="mask-icon" href="/favicon.svg" color="#0066cc" />
 
         <!-- Preload Critical Resources -->
         <link

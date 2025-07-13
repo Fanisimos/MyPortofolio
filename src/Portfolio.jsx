@@ -1,87 +1,72 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import { Box, Chip, IconButton, Tooltip } from "@mui/material";
 import portfolioItems from "./portfolioItems.js";
 import Timer from "./showcaseComponents/Timer.jsx";
 import DarkMode from "./showcaseComponents/DarkMode.jsx";
 import Progress from "./showcaseComponents/Progress.jsx";
+import OptimizedImage from "./components/OptimizedImage.jsx";
 import "./Portfolio.css";
 
-// Lazy loading utility for images
-const LazyImage = ({ src, alt, className, ...props }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    const element = document.getElementById(`img-${alt}`);
-    if (element) observer.observe(element);
-
-    return () => observer.disconnect();
-  }, [alt]);
-
-  return (
-    <div
-      id={`img-${alt}`}
-      className={`image-container ${className || ""}`}
-      {...props}
-    >
-      {isInView && (
-        <img
-          src={src}
-          alt={alt}
-          className={`portfolio-image ${isLoaded ? "loaded" : "loading"}`}
-          onLoad={() => setIsLoaded(true)}
-          loading="lazy"
-        />
-      )}
-      {!isLoaded && isInView && (
-        <div className="image-skeleton">
-          <div className="skeleton-shimmer"></div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Enhanced Portfolio Item Component
-const PortfolioItem = ({ item, index, onImageClick }) => {
+// Enhanced Portfolio Item Component with memoization
+const PortfolioItem = memo(({ item, index, onImageClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = useCallback(
     (e) => {
+      // Track interaction
+      if (window.performanceTracker) {
+        window.performanceTracker.track("project_click", Date.now(), {
+          project: item.title,
+          section: "portfolio",
+        });
+      }
+
       // Allow natural link behavior for anchor tag
       if (e.target.tagName === "A") return;
 
       // Open link in new tab for other clicks
       window.open(item.link, "_blank", "noopener,noreferrer");
     },
-    [item.link],
+    [item.link, item.title],
   );
 
   const handleImageClick = useCallback(
     (e) => {
       e.preventDefault();
       e.stopPropagation();
+
+      // Track image view
+      if (window.performanceTracker) {
+        window.performanceTracker.track("image_view", Date.now(), {
+          project: item.title,
+        });
+      }
+
       onImageClick(item.image, item.title);
     },
     [item.image, item.title, onImageClick],
   );
 
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+
+    // Preload image on hover for better UX
+    if (item.image) {
+      const img = new Image();
+      img.src = item.image;
+    }
+  }, [item.image]);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
+
   return (
     <article
       className={`portfolio-item ${isHovered ? "portfolio-item--hovered" : ""}`}
       style={{ animationDelay: `${index * 0.1}s` }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       role="button"
       tabIndex={0}
@@ -94,11 +79,16 @@ const PortfolioItem = ({ item, index, onImageClick }) => {
       aria-label={`View ${item.title} project`}
     >
       <div className="portfolio-item__image-wrapper">
-        <LazyImage
+        <OptimizedImage
           src={item.image}
           alt={`${item.title} project screenshot`}
           className="portfolio-item__image"
           onClick={handleImageClick}
+          loading={index < 2 ? "eager" : "lazy"}
+          priority={index < 2}
+          placeholder="blur"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          fallback="/logo.png"
         />
         <div className="portfolio-item__overlay">
           <div className="portfolio-item__actions">
@@ -197,10 +187,13 @@ const PortfolioItem = ({ item, index, onImageClick }) => {
       </div>
     </article>
   );
-};
+});
 
-// Image Modal Component
-const ImageModal = ({ isOpen, imageSrc, imageAlt, onClose }) => {
+// Add display name for debugging
+PortfolioItem.displayName = "PortfolioItem";
+
+// Image Modal Component with performance optimizations
+const ImageModal = memo(({ isOpen, imageSrc, imageAlt, onClose }) => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") onClose();
@@ -209,20 +202,38 @@ const ImageModal = ({ isOpen, imageSrc, imageAlt, onClose }) => {
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
+
+      // Track modal open
+      if (window.performanceTracker) {
+        window.performanceTracker.track("modal_open", Date.now(), {
+          type: "image",
+          image: imageAlt,
+        });
+      }
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "unset";
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, imageAlt]);
+
+  const handleClose = useCallback(() => {
+    // Track modal close
+    if (window.performanceTracker) {
+      window.performanceTracker.track("modal_close", Date.now(), {
+        type: "image",
+      });
+    }
+    onClose();
+  }, [onClose]);
 
   if (!isOpen) return null;
 
   return (
     <div
       className="image-modal"
-      onClick={onClose}
+      onClick={handleClose}
       role="dialog"
       aria-modal="true"
       aria-label="Full size project image"
@@ -233,45 +244,74 @@ const ImageModal = ({ isOpen, imageSrc, imageAlt, onClose }) => {
       >
         <button
           className="image-modal__close"
-          onClick={onClose}
+          onClick={handleClose}
           aria-label="Close modal"
         >
           ✕
         </button>
-        <img src={imageSrc} alt={imageAlt} className="image-modal__image" />
+        <OptimizedImage
+          src={imageSrc}
+          alt={imageAlt}
+          className="image-modal__image"
+          loading="eager"
+          priority={true}
+          placeholder="blur"
+        />
       </div>
     </div>
   );
-};
+});
 
-// Filter Component
-const ProjectFilter = ({ categories, activeCategory, onCategoryChange }) => {
-  return (
-    <div
-      className="project-filter"
-      role="tablist"
-      aria-label="Project categories"
-    >
-      {categories.map((category) => (
-        <button
-          key={category}
-          className={`filter-button ${
-            activeCategory === category ? "filter-button--active" : ""
-          }`}
-          onClick={() => onCategoryChange(category)}
-          role="tab"
-          aria-selected={activeCategory === category}
-          aria-controls="portfolio-grid"
-        >
-          {category}
-        </button>
-      ))}
-    </div>
-  );
-};
+// Add display name for debugging
+ImageModal.displayName = "ImageModal";
 
-// Main Portfolio Component
-function Portfolio() {
+// Filter Component with memoization
+const ProjectFilter = memo(
+  ({ categories, activeCategory, onCategoryChange }) => {
+    const handleCategoryChange = useCallback(
+      (category) => {
+        // Track filter usage
+        if (window.performanceTracker) {
+          window.performanceTracker.track("filter_change", Date.now(), {
+            from: activeCategory,
+            to: category,
+          });
+        }
+        onCategoryChange(category);
+      },
+      [activeCategory, onCategoryChange],
+    );
+
+    return (
+      <div
+        className="project-filter"
+        role="tablist"
+        aria-label="Project categories"
+      >
+        {categories.map((category) => (
+          <button
+            key={category}
+            className={`filter-button ${
+              activeCategory === category ? "filter-button--active" : ""
+            }`}
+            onClick={() => handleCategoryChange(category)}
+            role="tab"
+            aria-selected={activeCategory === category}
+            aria-controls="portfolio-grid"
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    );
+  },
+);
+
+// Add display name for debugging
+ProjectFilter.displayName = "ProjectFilter";
+
+// Main Portfolio Component with performance optimizations
+const Portfolio = memo(() => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [modalImage, setModalImage] = useState({
     isOpen: false,
@@ -279,6 +319,30 @@ function Portfolio() {
     alt: "",
   });
   const [searchTerm, setSearchTerm] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Track component mount
+  useEffect(() => {
+    if (window.performanceTracker) {
+      window.performanceTracker.track("portfolio_loaded", Date.now());
+    }
+
+    // Use IntersectionObserver to only render when visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    const element = document.getElementById("portfolio");
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
 
   // Enhanced portfolio items with additional metadata
   const enhancedPortfolioItems = useMemo(() => {
@@ -301,17 +365,16 @@ function Portfolio() {
     return cats;
   }, [enhancedPortfolioItems]);
 
-  // Filter items based on category and search
-  const filteredItems = useMemo(() => {
-    return enhancedPortfolioItems.filter((item) => {
-      const matchesCategory =
-        activeCategory === "All" || item.category === activeCategory;
-      const matchesSearch =
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [enhancedPortfolioItems, activeCategory, searchTerm]);
+  // Optimize search with debouncing
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   const handleImageClick = useCallback((src, alt) => {
     setModalImage({ isOpen: true, src, alt });
@@ -321,26 +384,55 @@ function Portfolio() {
     setModalImage({ isOpen: false, src: "", alt: "" });
   }, []);
 
-  const showcaseComponents = [
-    {
-      component: Timer,
-      title: "Interactive Timer",
-      description: "A customizable countdown timer",
-    },
-    {
-      component: DarkMode,
-      title: "Dark Mode Toggle",
-      description: "Theme switching component",
-    },
-    {
-      component: Progress,
-      title: "Progress Tracker",
-      description: "Animated progress indicators",
-    },
-  ];
+  // Memoize showcase components to prevent recreating on each render
+  const showcaseComponents = useMemo(
+    () => [
+      {
+        component: Timer,
+        title: "Interactive Timer",
+        description: "A customizable countdown timer",
+      },
+      {
+        component: DarkMode,
+        title: "Dark Mode Toggle",
+        description: "Theme switching component",
+      },
+      {
+        component: Progress,
+        title: "Progress Tracker",
+        description: "Animated progress indicators",
+      },
+    ],
+    [],
+  );
+
+  // Filter items based on category and debounced search
+  const filteredItems = useMemo(() => {
+    return enhancedPortfolioItems.filter((item) => {
+      const matchesCategory =
+        activeCategory === "All" || item.category === activeCategory;
+      const matchesSearch =
+        item.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+        item.description
+          .toLowerCase()
+          .includes(debouncedSearchTerm.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [enhancedPortfolioItems, activeCategory, debouncedSearchTerm]);
+
+  // Don't render until visible for better performance
+  if (!isVisible) {
+    return (
+      <div
+        id="portfolio"
+        className="portfolio"
+        style={{ minHeight: "100vh" }}
+      />
+    );
+  }
 
   return (
-    <div className="portfolio">
+    <div id="portfolio" className="portfolio">
       {/* Projects Section */}
       <section
         id="portfolio"
@@ -457,6 +549,9 @@ function Portfolio() {
       />
     </div>
   );
-}
+});
+
+// Add display name for debugging
+Portfolio.displayName = "Portfolio";
 
 export default Portfolio;
