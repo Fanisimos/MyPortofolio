@@ -1,0 +1,577 @@
+/* TechStack Component Styles */
+.tech-stack {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-stack::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(0, 102, 204, 0.05) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.tech-stack__title {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #0066cc;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.tech-stack__title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0066cc, #16f1be);
+    margin: 20px auto 0;
+    border-radius: 2px;
+    animation: expandWidth 1s ease-out 0.5s both;
+}
+
+.tech-stack__subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* Tech Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Tech Item Card */
+.tech-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    display: block;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.tech-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0066cc, #16f1be);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.tech-item:hover::before {
+    transform: scaleX(1);
+}
+
+.tech-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.tech-item:focus {
+    outline: 3px solid #16f1be;
+    outline-offset: 2px;
+}
+
+.tech-item__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    position: relative;
+}
+
+/* Icon Styling */
+.tech-item__icon-wrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    background: rgba(0, 102, 204, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-item__icon-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(22, 241, 190, 0.1),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-item:hover .tech-item__icon-wrapper::before {
+    opacity: 1;
+}
+
+.tech-item__icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* Brand-specific icon colors - always visible */
+.tech-item[data-tech="react"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(170deg) saturate(4) brightness(1.4)
+        drop-shadow(0 2px 8px rgba(97, 218, 251, 0.3));
+}
+
+.tech-item[data-tech="javascript"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(40deg) saturate(6) brightness(1.5)
+        drop-shadow(0 2px 8px rgba(247, 223, 30, 0.4));
+}
+
+.tech-item[data-tech="node.js"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.1)
+        drop-shadow(0 2px 8px rgba(60, 135, 58, 0.3));
+}
+
+.tech-item[data-tech="express"] .tech-item__icon {
+    filter: grayscale(1) contrast(1.5) brightness(0.4)
+        drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.tech-item[data-tech="tailwind-css"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(180deg) saturate(5) brightness(1.3)
+        drop-shadow(0 2px 8px rgba(56, 189, 248, 0.3));
+}
+
+.tech-item[data-tech="html5"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(10deg) saturate(7) brightness(1.3)
+        drop-shadow(0 2px 8px rgba(227, 76, 38, 0.3));
+}
+
+.tech-item[data-tech="css3"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(210deg) saturate(5) brightness(1.1)
+        drop-shadow(0 2px 8px rgba(38, 77, 228, 0.3));
+}
+
+.tech-item[data-tech="git"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(5deg) saturate(6) brightness(1.3)
+        drop-shadow(0 2px 8px rgba(240, 80, 50, 0.3));
+}
+
+.tech-item[data-tech="github"] .tech-item__icon {
+    filter: grayscale(1) contrast(1.5) brightness(0.5)
+        drop-shadow(0 2px 8px rgba(36, 41, 46, 0.3));
+}
+
+.tech-item[data-tech="mysql"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(180deg) saturate(3) brightness(1)
+        drop-shadow(0 2px 8px rgba(0, 117, 143, 0.3));
+}
+
+.tech-item[data-tech="python"] .tech-item__icon {
+    filter: sepia(1) hue-rotate(200deg) saturate(4) brightness(1.1)
+        drop-shadow(0 2px 8px rgba(55, 118, 171, 0.3));
+}
+
+/* This rule is now handled by individual brand-specific hover effects above */
+
+/* Enhanced hover effects - intensify the already visible brand colors */
+.tech-item[data-tech="react"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(170deg) saturate(6) brightness(1.6)
+        drop-shadow(0 6px 16px rgba(97, 218, 251, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="javascript"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(40deg) saturate(8) brightness(1.7)
+        drop-shadow(0 6px 16px rgba(247, 223, 30, 0.7));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="node.js"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(80deg) saturate(5) brightness(1.3)
+        drop-shadow(0 6px 16px rgba(60, 135, 58, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="express"]:hover .tech-item__icon {
+    filter: grayscale(1) contrast(1.8) brightness(0.6)
+        drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="tailwind-css"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(180deg) saturate(7) brightness(1.5)
+        drop-shadow(0 6px 16px rgba(56, 189, 248, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="html5"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(10deg) saturate(9) brightness(1.5)
+        drop-shadow(0 6px 16px rgba(227, 76, 38, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="css3"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(210deg) saturate(7) brightness(1.3)
+        drop-shadow(0 6px 16px rgba(38, 77, 228, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="git"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(5deg) saturate(8) brightness(1.5)
+        drop-shadow(0 6px 16px rgba(240, 80, 50, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="github"]:hover .tech-item__icon {
+    filter: grayscale(1) contrast(1.8) brightness(0.7)
+        drop-shadow(0 6px 16px rgba(36, 41, 46, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="mysql"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(180deg) saturate(5) brightness(1.2)
+        drop-shadow(0 6px 16px rgba(0, 117, 143, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item[data-tech="python"]:hover .tech-item__icon {
+    filter: sepia(1) hue-rotate(200deg) saturate(6) brightness(1.3)
+        drop-shadow(0 6px 16px rgba(55, 118, 171, 0.6));
+    transform: scale(1.15);
+}
+
+.tech-item:hover .tech-item__icon-wrapper {
+    background: rgba(0, 102, 204, 0.1);
+    transform: scale(1.05);
+}
+
+/* Brand-specific background colors for icon wrappers */
+.tech-item[data-tech="react"]:hover .tech-item__icon-wrapper {
+    background: rgba(97, 218, 251, 0.2);
+}
+
+.tech-item[data-tech="javascript"]:hover .tech-item__icon-wrapper {
+    background: rgba(247, 223, 30, 0.2);
+}
+
+.tech-item[data-tech="node.js"]:hover .tech-item__icon-wrapper {
+    background: rgba(60, 135, 58, 0.2);
+}
+
+.tech-item[data-tech="express"]:hover .tech-item__icon-wrapper {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.tech-item[data-tech="tailwind-css"]:hover .tech-item__icon-wrapper {
+    background: rgba(56, 189, 248, 0.2);
+}
+
+.tech-item[data-tech="html5"]:hover .tech-item__icon-wrapper {
+    background: rgba(227, 76, 38, 0.2);
+}
+
+.tech-item[data-tech="css3"]:hover .tech-item__icon-wrapper {
+    background: rgba(38, 77, 228, 0.2);
+}
+
+.tech-item[data-tech="git"]:hover .tech-item__icon-wrapper {
+    background: rgba(240, 80, 50, 0.2);
+}
+
+.tech-item[data-tech="github"]:hover .tech-item__icon-wrapper {
+    background: rgba(36, 41, 46, 0.2);
+}
+
+.tech-item[data-tech="mysql"]:hover .tech-item__icon-wrapper {
+    background: rgba(0, 117, 143, 0.2);
+}
+
+.tech-item[data-tech="python"]:hover .tech-item__icon-wrapper {
+    background: rgba(55, 118, 171, 0.2);
+}
+
+/* Text Content */
+.tech-item__name {
+    font-family: "Inter", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 12px 0;
+    transition: color 0.3s ease;
+}
+
+.tech-item:hover .tech-item__name {
+    color: #0066cc;
+}
+
+.tech-item__description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+    transition: color 0.3s ease;
+}
+
+.tech-item:hover .tech-item__description {
+    color: #555;
+}
+
+/* Link Indicator */
+.tech-item__link-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #0066cc;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover .tech-item__link-indicator {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-item__link-indicator svg {
+    transition: transform 0.3s ease;
+}
+
+.tech-item:hover .tech-item__link-indicator svg {
+    transform: translateX(2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-stack {
+        padding: 60px 0;
+    }
+
+    .tech-stack__subtitle {
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+
+    .tech-item {
+        padding: 25px 15px;
+    }
+
+    .tech-item__icon-wrapper {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 15px;
+    }
+
+    .tech-item__icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .tech-item__name {
+        font-size: 1.1rem;
+    }
+
+    .tech-item__description {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-stack {
+        padding: 40px 0;
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tech-item {
+        padding: 20px 15px;
+    }
+
+    .tech-item__icon-wrapper {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 12px;
+    }
+
+    .tech-item__icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .tech-item__name {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .tech-item__description {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+}
+
+/* Animation */
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .tech-item,
+    .tech-item__icon,
+    .tech-item__icon-wrapper,
+    .tech-item__link-indicator {
+        transition: none;
+    }
+
+    .tech-item::before {
+        display: none;
+    }
+
+    .tech-stack__title::after {
+        animation: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .tech-stack {
+        background: #fff;
+    }
+
+    .tech-item {
+        background: #fff;
+        border: 2px solid #000;
+    }
+
+    .tech-item__name {
+        color: #000;
+    }
+
+    .tech-item__description {
+        color: #333;
+    }
+
+    .tech-item__link-indicator {
+        color: #000;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .tech-stack {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+
+    .tech-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #e0e0e0;
+    }
+
+    .tech-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .tech-stack__title {
+        color: #16f1be;
+    }
+
+    .tech-stack__subtitle {
+        color: #b0b0b0;
+    }
+
+    .tech-item__name {
+        color: #e0e0e0;
+    }
+
+    .tech-item:hover .tech-item__name {
+        color: #16f1be;
+    }
+
+    .tech-item__description {
+        color: #b0b0b0;
+    }
+
+    .tech-item:hover .tech-item__description {
+        color: #d0d0d0;
+    }
+
+    .tech-item__icon-wrapper {
+        background: rgba(22, 241, 190, 0.1);
+    }
+
+    .tech-item:hover .tech-item__icon-wrapper {
+        background: rgba(22, 241, 190, 0.2);
+    }
+}

@@ -1,0 +1,474 @@
+/* Modern Button Component Styles */
+.modern-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  vertical-align: middle;
+  background: transparent;
+  color: inherit;
+}
+
+.modern-button:focus-visible {
+  outline: 3px solid #16f1be;
+  outline-offset: 2px;
+}
+
+/* Button Content */
+.modern-button__content {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.modern-button:active .modern-button__content {
+  transform: scale(0.95);
+}
+
+/* Button Icons */
+.modern-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.modern-button__icon--left {
+  margin-right: -4px;
+}
+
+.modern-button__icon--right {
+  margin-left: -4px;
+}
+
+.modern-button:hover .modern-button__icon--right {
+  transform: translateX(2px);
+}
+
+.modern-button:hover .modern-button__icon--left {
+  transform: translateX(-2px);
+}
+
+/* Loading Spinner */
+.modern-button__spinner {
+  position: relative;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-icon {
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-icon circle {
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+/* Ripple Effect */
+.modern-button__ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.modern-button:active .modern-button__ripple {
+  width: 300px;
+  height: 300px;
+}
+
+/* Button Variants */
+
+/* Default Variant */
+.modern-button--default {
+  background: rgba(255, 255, 255, 0.1);
+  color: #0066cc;
+  border-color: rgba(0, 102, 204, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.modern-button--default:hover {
+  background: rgba(0, 102, 204, 0.1);
+  border-color: #0066cc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.2);
+}
+
+.modern-button--default:active {
+  transform: translateY(0);
+}
+
+/* Primary Variant */
+.modern-button--primary {
+  background: linear-gradient(135deg, #0066cc, #004080);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+}
+
+.modern-button--primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+  z-index: 1;
+}
+
+.modern-button--primary:hover::before {
+  left: 100%;
+}
+
+.modern-button--primary:hover {
+  background: linear-gradient(135deg, #0056b3, #003366);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4);
+}
+
+.modern-button--primary:active {
+  transform: translateY(-1px);
+}
+
+/* Secondary Variant */
+.modern-button--secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0066cc;
+  border-color: #0066cc;
+  backdrop-filter: blur(10px);
+}
+
+.modern-button--secondary:hover {
+  background: rgba(0, 102, 204, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.2);
+}
+
+.modern-button--secondary:active {
+  transform: translateY(0);
+}
+
+/* Ghost Variant */
+.modern-button--ghost {
+  background: transparent;
+  color: #0066cc;
+  border-color: transparent;
+}
+
+.modern-button--ghost:hover {
+  background: rgba(0, 102, 204, 0.1);
+  border-color: rgba(0, 102, 204, 0.3);
+}
+
+.modern-button--ghost:active {
+  background: rgba(0, 102, 204, 0.2);
+}
+
+/* Danger Variant */
+.modern-button--danger {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.modern-button--danger:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.modern-button--danger:active {
+  transform: translateY(0);
+}
+
+/* Button Sizes */
+
+/* Small Size */
+.modern-button--small {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  min-height: 32px;
+}
+
+.modern-button--small .modern-button__icon {
+  font-size: 0.875rem;
+}
+
+.modern-button--small .modern-button__spinner {
+  width: 14px;
+  height: 14px;
+}
+
+.modern-button--small .spinner-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Medium Size (Default) */
+.modern-button--medium {
+  padding: 12px 24px;
+  font-size: 1rem;
+  min-height: 44px;
+}
+
+.modern-button--medium .modern-button__icon {
+  font-size: 1rem;
+}
+
+/* Large Size */
+.modern-button--large {
+  padding: 16px 32px;
+  font-size: 1.125rem;
+  min-height: 52px;
+}
+
+.modern-button--large .modern-button__icon {
+  font-size: 1.125rem;
+}
+
+.modern-button--large .modern-button__spinner {
+  width: 20px;
+  height: 20px;
+}
+
+.modern-button--large .spinner-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Button States */
+
+/* Active State */
+.modern-button--active {
+  background: rgba(0, 102, 204, 0.2);
+  color: #0066cc;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.modern-button--primary.modern-button--active {
+  background: linear-gradient(135deg, #0056b3, #003366);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.4);
+}
+
+/* Disabled State */
+.modern-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.modern-button--disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Loading State */
+.modern-button--loading {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.modern-button--loading .modern-button__content {
+  opacity: 0.7;
+}
+
+/* Animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 0 32;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 16 16;
+    stroke-dashoffset: -8;
+  }
+  100% {
+    stroke-dasharray: 0 32;
+    stroke-dashoffset: -32;
+  }
+}
+
+/* Legacy Support for older className patterns */
+.modern-button.active,
+.modern-button.is-active {
+  background: rgba(0, 102, 204, 0.2);
+  color: #0066cc;
+  border-color: #0066cc;
+  font-weight: 600;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-button {
+    min-height: 48px; /* Larger touch targets on mobile */
+  }
+
+  .modern-button--small {
+    min-height: 40px;
+    padding: 10px 18px;
+  }
+
+  .modern-button--medium {
+    min-height: 48px;
+    padding: 14px 26px;
+  }
+
+  .modern-button--large {
+    min-height: 56px;
+    padding: 18px 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-button {
+    font-size: 0.95rem;
+  }
+
+  .modern-button--small {
+    font-size: 0.85rem;
+  }
+
+  .modern-button--large {
+    font-size: 1.05rem;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .modern-button {
+    border-width: 2px;
+  }
+
+  .modern-button--primary {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+  }
+
+  .modern-button--secondary {
+    background: #fff;
+    color: #000;
+    border-color: #000;
+  }
+
+  .modern-button--danger {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .modern-button,
+  .modern-button *,
+  .modern-button::before,
+  .modern-button::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .modern-button__ripple {
+    display: none;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .modern-button--default {
+    background: rgba(255, 255, 255, 0.05);
+    color: #16f1be;
+    border-color: rgba(22, 241, 190, 0.3);
+  }
+
+  .modern-button--default:hover {
+    background: rgba(22, 241, 190, 0.1);
+    border-color: #16f1be;
+  }
+
+  .modern-button--secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #16f1be;
+    border-color: #16f1be;
+  }
+
+  .modern-button--secondary:hover {
+    background: rgba(22, 241, 190, 0.1);
+  }
+
+  .modern-button--ghost {
+    color: #16f1be;
+  }
+
+  .modern-button--ghost:hover {
+    background: rgba(22, 241, 190, 0.1);
+    border-color: rgba(22, 241, 190, 0.3);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .modern-button {
+    background: none !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+  }
+
+  .modern-button::before,
+  .modern-button__ripple,
+  .modern-button__spinner {
+    display: none !important;
+  }
+}
