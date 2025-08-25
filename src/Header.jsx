@@ -11,19 +11,34 @@ function Header({ onNavClick, activeSection }) {
 
   // Handle scroll effect for header and progress bar
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    let timeoutId = null;
 
-      // Calculate scroll progress
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress =
-        totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-      setScrollProgress(progress);
+    const handleScroll = () => {
+      // Clear previous timeout
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+
+      // Set a small delay to prevent rapid state changes
+      timeoutId = setTimeout(() => {
+        const scrollY = window.scrollY;
+        setIsScrolled(scrollY > 50);
+
+        // Calculate scroll progress
+        const totalHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
+        setScrollProgress(progress);
+      }, 10);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
   // Close mobile menu when section changes
