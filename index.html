@@ -1,344 +1,345 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Essential Meta Tags -->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <!-- SEO Meta Tags -->
-        <title>
-            John Litsai - Full Stack Developer & AI Enthusiast | Portfolio
-        </title>
-        <meta
-            name="description"
-            content="John Litsai - Computer Science student and full-stack developer specializing in React, JavaScript, and AI. View my portfolio of modern web applications and interactive components."
-        />
-        <meta
-            name="keywords"
-            content="John Litsai, Full Stack Developer, React Developer, JavaScript, AI, Computer Science, Web Development, Portfolio, Frontend, Backend"
-        />
-        <meta name="author" content="John Litsai" />
-        <meta name="robots" content="index, follow" />
-        <meta name="language" content="English" />
+    <!-- SEO Meta Tags -->
+    <title>
+      John Litsai - Full Stack Developer & AI Enthusiast | Portfolio
+    </title>
+    <meta
+      name="description"
+      content="John Litsai - Computer Science student and full-stack developer specializing in React, JavaScript, and AI. View my portfolio of modern web applications and interactive components."
+    />
+    <meta
+      name="keywords"
+      content="John Litsai, Full Stack Developer, React Developer, JavaScript, AI, Computer Science, Web Development, Portfolio, Frontend, Backend"
+    />
+    <meta name="author" content="John Litsai" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
 
-        <!-- Open Graph Meta Tags -->
-        <meta
-            property="og:title"
-            content="John Litsai - Full Stack Developer & AI Enthusiast"
-        />
-        <meta
-            property="og:description"
-            content="Explore my portfolio featuring modern web applications built with React, JavaScript, and cutting-edge technologies."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://johnlitsai.dev" />
-        <meta property="og:image" content="/og-image.jpg" />
-        <meta property="og:image:alt" content="John Litsai Portfolio Preview" />
-        <meta property="og:site_name" content="John Litsai Portfolio" />
-        <meta property="og:locale" content="en_US" />
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="John Litsai - Full Stack Developer & AI Enthusiast"
+    />
+    <meta
+      property="og:description"
+      content="Explore my portfolio featuring modern web applications built with React, JavaScript, and cutting-edge technologies."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://johnlitsai.dev" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:alt" content="John Litsai Portfolio Preview" />
+    <meta property="og:site_name" content="John Litsai Portfolio" />
+    <meta property="og:locale" content="en_US" />
 
-        <!-- Twitter Card Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:title"
-            content="John Litsai - Full Stack Developer & AI Enthusiast"
-        />
-        <meta
-            name="twitter:description"
-            content="Computer Science student passionate about creating innovative web solutions with React and AI technologies."
-        />
-        <meta name="twitter:image" content="/twitter-image.jpg" />
-        <meta name="twitter:image:alt" content="John Litsai Portfolio" />
-        <meta name="twitter:creator" content="@johnlitsai" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="John Litsai - Full Stack Developer & AI Enthusiast"
+    />
+    <meta
+      name="twitter:description"
+      content="Computer Science student passionate about creating innovative web solutions with React and AI technologies."
+    />
+    <meta name="twitter:image" content="/twitter-image.jpg" />
+    <meta name="twitter:image:alt" content="John Litsai Portfolio" />
+    <meta name="twitter:creator" content="@johnlitsai" />
 
-        <!-- Favicon and Icons -->
-        <!-- Modern SVG favicon for vector scalability -->
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <!-- Fallback ICO for older browsers -->
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <!-- PNG favicons for specific sizes -->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-        />
-        <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-        />
-        <!-- Web App Manifest for PWA -->
-        <link rel="manifest" href="/site.webmanifest" />
-        <!-- Theme colors for different platforms -->
-        <meta name="theme-color" content="#0066cc" />
-        <meta name="msapplication-TileColor" content="#0066cc" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-        <!-- Safari pinned tab icon -->
-        <link rel="mask-icon" href="/favicon.svg" color="#0066cc" />
+    <!-- Favicon and Icons -->
+    <!-- Modern SVG favicon for vector scalability -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Fallback ICO for older browsers -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- PNG favicons for specific sizes -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Web App Manifest for PWA -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Theme colors for different platforms -->
+    <meta name="theme-color" content="#0066cc" />
+    <meta name="msapplication-TileColor" content="#0066cc" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <!-- Safari pinned tab icon -->
+    <link rel="mask-icon" href="/favicon.svg" color="#0066cc" />
 
-        <!-- Preload Critical Resources -->
-        <link
-            rel="preload"
-            href="/src/assets/logo.png"
-            as="image"
-            type="image/png"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="/src/assets/logo.png"
+      as="image"
+      type="image/png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <!-- DNS Prefetch for External Resources -->
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
 
-        <!-- Structured Data (JSON-LD) -->
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "John Litsai",
-                "url": "https://johnlitsai.dev",
-                "jobTitle": "Full Stack Developer",
-                "description": "Computer Science and AI student passionate about web development",
-                "knowsAbout": [
-                    "JavaScript",
-                    "React",
-                    "Node.js",
-                    "Python",
-                    "Artificial Intelligence",
-                    "Web Development",
-                    "Frontend Development",
-                    "Backend Development"
-                ],
-                "alumniOf": {
-                    "@type": "EducationalOrganization",
-                    "name": "University"
-                },
-                "sameAs": [
-                    "https://github.com/johnlitsai",
-                    "https://linkedin.com/in/johnlitsai",
-                    "https://instagram.com/john.litsai"
-                ]
-            }
-        </script>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "John Litsai",
+        "url": "https://johnlitsai.dev",
+        "jobTitle": "Full Stack Developer",
+        "description": "Computer Science and AI student passionate about web development",
+        "knowsAbout": [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Python",
+          "Artificial Intelligence",
+          "Web Development",
+          "Frontend Development",
+          "Backend Development"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "University"
+        },
+        "sameAs": [
+          "https://github.com/johnlitsai",
+          "https://linkedin.com/in/johnlitsai",
+          "https://instagram.com/john.litsai"
+        ]
+      }
+    </script>
 
-        <!-- Performance and Security -->
-        <meta
-            http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; media-src 'self';"
-        />
-        <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-        <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-        <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-        <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Performance and Security -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: ws:; media-src 'self';"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-        <!-- PWA Configuration -->
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="John Litsai" />
+    <!-- PWA Configuration -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="John Litsai" />
 
-        <!-- Critical CSS Inline (for performance) -->
-        <style>
-            /* Critical above-the-fold styles */
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
+    <!-- Critical CSS Inline (for performance) -->
+    <style>
+      /* Critical above-the-fold styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-            html {
-                scroll-behavior: smooth;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-            body {
-                font-family:
-                    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-                    "Oxygen", "Ubuntu", "Cantarell", sans-serif;
-                line-height: 1.6;
-                color: #333;
-                background: #ffffff;
-                overflow-x: hidden;
-            }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #ffffff;
+        overflow-x: hidden;
+      }
 
-            #root {
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-            }
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-            /* Loading animation for better UX */
-            .loading-screen {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #004080, #0066cc);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 9999;
-                opacity: 1;
-                transition: opacity 0.5s ease;
-            }
+      /* Loading animation for better UX */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #004080, #0066cc);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
 
-            .loading-screen.fade-out {
-                opacity: 0;
-                pointer-events: none;
-            }
+      .loading-screen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
 
-            .loading-spinner {
-                width: 50px;
-                height: 50px;
-                border: 3px solid rgba(255, 255, 255, 0.3);
-                border-top: 3px solid #16f1be;
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-            }
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid #16f1be;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
 
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
-            /* Skip link for accessibility */
-            .skip-link {
-                position: absolute;
-                top: -40px;
-                left: 6px;
-                background: #0066cc;
-                color: white;
-                padding: 8px;
-                text-decoration: none;
-                border-radius: 4px;
-                z-index: 10000;
-                transition: top 0.3s;
-            }
+      /* Skip link for accessibility */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #0066cc;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 10000;
+        transition: top 0.3s;
+      }
 
-            .skip-link:focus {
-                top: 6px;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Skip Link for Accessibility -->
-        <a href="#main-content" class="skip-link">Skip to main content</a>
+      .skip-link:focus {
+        top: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-        <!-- Loading Screen -->
-        <div id="loading-screen" class="loading-screen">
-            <div class="loading-spinner"></div>
-        </div>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-spinner"></div>
+    </div>
 
-        <!-- Main Application Container -->
-        <div id="root" role="main"></div>
+    <!-- Main Application Container -->
+    <div id="root" role="main"></div>
 
-        <!-- No JavaScript Fallback -->
-        <noscript>
-            <div
-                style="
-                    text-align: center;
-                    padding: 50px;
-                    font-family: Arial, sans-serif;
-                "
-            >
-                <h1>JavaScript Required</h1>
-                <p>
-                    This portfolio requires JavaScript to function properly.
-                    Please enable JavaScript in your browser and refresh the
-                    page.
-                </p>
-                <p>
-                    Alternatively, you can view my work on
-                    <a
-                        href="https://github.com/johnlitsai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >GitHub</a
-                    >.
-                </p>
-            </div>
-        </noscript>
+    <!-- No JavaScript Fallback -->
+    <noscript>
+      <div
+        style="
+          text-align: center;
+          padding: 50px;
+          font-family: Arial, sans-serif;
+        "
+      >
+        <h1>JavaScript Required</h1>
+        <p>
+          This portfolio requires JavaScript to function properly. Please enable
+          JavaScript in your browser and refresh the page.
+        </p>
+        <p>
+          Alternatively, you can view my work on
+          <a
+            href="https://github.com/johnlitsai"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >.
+        </p>
+      </div>
+    </noscript>
 
-        <!-- Service Worker Registration -->
-        <script>
-            // Remove loading screen when app loads
-            window.addEventListener("load", function () {
-                const loadingScreen = document.getElementById("loading-screen");
-                if (loadingScreen) {
-                    loadingScreen.classList.add("fade-out");
-                    setTimeout(() => {
-                        loadingScreen.remove();
-                    }, 500);
-                }
+    <!-- Service Worker Registration -->
+    <script>
+      // Remove loading screen when app loads
+      window.addEventListener("load", function () {
+        const loadingScreen = document.getElementById("loading-screen");
+        if (loadingScreen) {
+          loadingScreen.classList.add("fade-out");
+          setTimeout(() => {
+            loadingScreen.remove();
+          }, 500);
+        }
+      });
+
+      // Service worker: avoid in local dev; cleanup any existing SW & caches on localhost
+      (function manageServiceWorker() {
+        if (!("serviceWorker" in navigator)) return;
+
+        const isLocalhost = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(
+          location.hostname
+        );
+
+        if (isLocalhost) {
+          // Unregister any existing SWs and clear caches to prevent stale dev assets
+          navigator.serviceWorker.getRegistrations().then((regs) => {
+            regs.forEach((reg) => reg.unregister());
+          });
+          if (window.caches && caches.keys) {
+            caches
+              .keys()
+              .then((names) => names.forEach((n) => caches.delete(n)));
+          }
+          return; // Do not register SW on localhost
+        }
+
+        // Only register SW outside localhost (production/preview)
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then(function (registration) {
+              console.log("SW registered: ", registration);
+            })
+            .catch(function (registrationError) {
+              console.log("SW registration failed: ", registrationError);
             });
+        });
+      })();
 
-            // Register service worker for PWA functionality
-            if ("serviceWorker" in navigator) {
-                window.addEventListener("load", function () {
-                    navigator.serviceWorker
-                        .register("/sw.js")
-                        .then(function (registration) {
-                            console.log("SW registered: ", registration);
-                        })
-                        .catch(function (registrationError) {
-                            console.log(
-                                "SW registration failed: ",
-                                registrationError,
-                            );
-                        });
-                });
-            }
+      // Performance monitoring
+      window.addEventListener("load", function () {
+        if (window.performance && window.performance.timing) {
+          const loadTime =
+            window.performance.timing.loadEventEnd -
+            window.performance.timing.navigationStart;
+          console.log("Page load time:", loadTime, "ms");
 
-            // Performance monitoring
-            window.addEventListener("load", function () {
-                if (window.performance && window.performance.timing) {
-                    const loadTime =
-                        window.performance.timing.loadEventEnd -
-                        window.performance.timing.navigationStart;
-                    console.log("Page load time:", loadTime, "ms");
-
-                    // Send to analytics if available
-                    if (typeof gtag !== "undefined") {
-                        gtag("event", "timing_complete", {
-                            name: "load",
-                            value: loadTime,
-                        });
-                    }
-                }
+          // Send to analytics if available
+          if (typeof gtag !== "undefined") {
+            gtag("event", "timing_complete", {
+              name: "load",
+              value: loadTime,
             });
+          }
+        }
+      });
 
-            // Error tracking
-            window.addEventListener("error", function (e) {
-                console.error("Global error:", e.error);
-                // Send to error tracking service if available
-            });
+      // Error tracking
+      window.addEventListener("error", function (e) {
+        console.error("Global error:", e.error);
+        // Send to error tracking service if available
+      });
 
-            // Unhandled promise rejection tracking
-            window.addEventListener("unhandledrejection", function (e) {
-                console.error("Unhandled promise rejection:", e.reason);
-                // Send to error tracking service if available
-            });
-        </script>
+      // Unhandled promise rejection tracking
+      window.addEventListener("unhandledrejection", function (e) {
+        console.error("Unhandled promise rejection:", e.reason);
+        // Send to error tracking service if available
+      });
+    </script>
 
-        <!-- Main Application Script -->
-        <script type="module" src="/src/main.jsx"></script>
+    <!-- Main Application Script -->
+    <script type="module" src="/src/main.jsx"></script>
 
-        <!-- Google Analytics (Optional - replace with your tracking ID) -->
-        <!--
+    <!-- Google Analytics (Optional - replace with your tracking ID) -->
+    <!--
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -346,5 +347,6 @@
         gtag('js', new Date());
         gtag('config', 'GA_TRACKING_ID');
     </script>
-    --></body>
+    -->
+  </body>
 </html>

@@ -67,6 +67,8 @@ export default defineConfig({
   server: {
     // Enable HMR for faster development
     hmr: true,
+    host: true,
+    port: 5173,
     // Optimize dev server performance
     fs: {
       strict: false,
