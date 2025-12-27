@@ -9,25 +9,37 @@ function Header({ onNavClick, activeSection }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  // Simplified scroll handler - single threshold with smooth transition
+  // Scroll handler with hysteresis to prevent flickering
   useEffect(() => {
     let rafId = null;
-    let lastKnownScrollY = 0;
+    let currentState = false;
     
-    const SCROLL_THRESHOLD = 100; // Single threshold for simplicity
+    const THRESHOLD_DOWN = 150;  // Scroll down past this to collapse
+    const THRESHOLD_UP = 100;     // Scroll up above this to expand
 
     const updateScrollState = () => {
       const scrollY = window.scrollY;
       
-      // Update scrolled state
-      setIsScrolled(scrollY > SCROLL_THRESHOLD);
+      // Hysteresis logic: different thresholds based on current state
+      let newState;
+      if (currentState) {
+        // Currently collapsed - need to scroll above THRESHOLD_UP to expand
+        newState = scrollY > THRESHOLD_UP;
+      } else {
+        // Currently expanded - need to scroll past THRESHOLD_DOWN to collapse
+        newState = scrollY > THRESHOLD_DOWN;
+      }
+      
+      if (newState !== currentState) {
+        currentState = newState;
+        setIsScrolled(newState);
+      }
       
       // Calculate scroll progress
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
       setScrollProgress(progress);
       
-      lastKnownScrollY = scrollY;
       rafId = null;
     };
 
