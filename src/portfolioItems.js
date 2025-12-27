@@ -1,7 +1,7 @@
 import FarAway from "./assets/FarAway.png";
 import Forkify from "./assets/Forkify.png";
 import Mapty from "./assets/Mapty.png";
-import inkNfiber from "./assets/logo.png"; // Placeholder - replace with actual screenshot
+import inkNfiber from "./assets/inkNfiber.png";
 
 const portfolioItems = [
   {
