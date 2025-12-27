@@ -8,9 +8,11 @@
   background: linear-gradient(135deg, #004080 0%, #0066cc 50%, #16f1be 100%);
   padding: 10px 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: padding 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
-    background 0.3s ease-in-out;
+  transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  will-change: padding, box-shadow;
 }
 
 .header--scrolled {
@@ -40,15 +42,18 @@
   position: relative;
   height: 160px;
   opacity: 1;
-  transition: height 0.3s ease-in-out, opacity 0.2s ease-in-out 0.1s,
-    margin-bottom 0.3s ease-in-out;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  will-change: height, opacity;
 }
 
 .header--scrolled .header__hero-section {
   height: 0;
   margin-bottom: 0;
   opacity: 0;
+  pointer-events: none;
 }
 
 .header__geometric-bg {

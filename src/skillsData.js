@@ -10,6 +10,8 @@ import githubIcon from "./assets/icons/github.svg";
 import MySQL from "./assets/icons/mysql.svg";
 import expressIcon from "./assets/icons/express.svg";
 import pythonIcon from "./assets/icons/python.svg";
+import anthropicIcon from "./assets/icons/anthropic.svg";
+import openaiIcon from "./assets/icons/openai.svg";
 
 const techStack = [
   {
@@ -92,7 +94,7 @@ const techStack = [
   },
   {
     name: "Claude AI Sonnet 4.5",
-    icon: pythonIcon, // Using python icon as placeholder for AI
+    icon: anthropicIcon,
     bg: "#8b5cf6",
     description:
       "Expert-level prompt engineering with Claude AI for automation and intelligent workflows",
@@ -100,7 +102,7 @@ const techStack = [
   },
   {
     name: "ChatGPT 4o",
-    icon: pythonIcon, // Using python icon as placeholder for AI
+    icon: openaiIcon,
     bg: "#10a37f",
     description:
       "Advanced prompt engineering and AI integration for building smart applications",

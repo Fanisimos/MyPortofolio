@@ -427,13 +427,13 @@
   max-width: 900px;
   margin: 0 auto;
   position: relative;
-  padding: 30px 0 30px 60px;
+  padding: 30px 0 30px 40px;
 }
 
 .journey-timeline::before {
   content: "";
   position: absolute;
-  left: 22px;
+  left: 2px;
   top: 0;
   bottom: 0;
   width: 4px;
@@ -481,7 +481,7 @@
 
 .timeline-marker {
   position: absolute;
-  left: -58px;
+  left: -78px;
   top: 35px;
   width: 48px;
   height: 48px;
@@ -776,11 +776,11 @@
   }
 
   .journey-timeline {
-    padding: 20px 0 20px 50px;
+    padding: 20px 0 20px 30px;
   }
 
   .journey-timeline::before {
-    left: 18px;
+    left: 0;
   }
 
   .timeline-item {
@@ -790,7 +790,7 @@
   }
 
   .timeline-marker {
-    left: -48px;
+    left: -68px;
     width: 40px;
     height: 40px;
     font-size: 1.3rem;
@@ -844,7 +844,7 @@
   }
 
   .timeline-marker {
-    left: -43px;
+    left: -63px;
     width: 32px;
     height: 32px;
     font-size: 1.1rem;
@@ -852,11 +852,11 @@
   }
 
   .journey-timeline::before {
-    left: 15px;
+    left: 0;
   }
 
   .journey-timeline {
-    padding: 15px 0 15px 40px;
+    padding: 15px 0 15px 20px;
   }
 
   .timeline-content h4 {
