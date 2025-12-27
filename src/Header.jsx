@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Button } from "./Button.jsx";
 import { Box, useMediaQuery } from "@mui/material";
 import "./Header.css";
@@ -9,57 +9,43 @@ function Header({ onNavClick, activeSection }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  // Handle scroll effect for header and progress bar
+  // Simplified scroll handler - single threshold with smooth transition
   useEffect(() => {
-    let ticking = false;
-    let lastScrollY = window.scrollY;
-    let lastScrollDirection = null;
+    let rafId = null;
+    let lastKnownScrollY = 0;
+    
+    const SCROLL_THRESHOLD = 100; // Single threshold for simplicity
+
+    const updateScrollState = () => {
+      const scrollY = window.scrollY;
+      
+      // Update scrolled state
+      setIsScrolled(scrollY > SCROLL_THRESHOLD);
+      
+      // Calculate scroll progress
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
+      setScrollProgress(progress);
+      
+      lastKnownScrollY = scrollY;
+      rafId = null;
+    };
 
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-      
-      // Only process if scroll changed significantly or direction changed
-      if (Math.abs(scrollY - lastScrollY) < 3 && scrollDirection === lastScrollDirection) return;
-      
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          // Use hysteresis to prevent flickering at threshold
-          // When scrolling down, switch at 50px
-          // When scrolling up, switch at 30px
-          const scrollThreshold = scrollDirection === 'down' ? 50 : 30;
-          const shouldBeScrolled = scrollY > scrollThreshold;
-          
-          // Update state only when crossing the threshold
-          setIsScrolled(prev => {
-            if (prev !== shouldBeScrolled) {
-              return shouldBeScrolled;
-            }
-            return prev;
-          });
-
-          // Calculate scroll progress
-          const totalHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-          const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
-          setScrollProgress(progress);
-
-          lastScrollY = scrollY;
-          lastScrollDirection = scrollDirection;
-          ticking = false;
-        });
-
-        ticking = true;
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updateScrollState);
       }
     };
 
-    // Initial check
-    const initialScrollY = window.scrollY;
-    setIsScrolled(initialScrollY > 50);
+    // Initial state
+    updateScrollState();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, []);
 

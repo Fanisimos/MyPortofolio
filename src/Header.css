@@ -8,18 +8,12 @@
   background: linear-gradient(135deg, #004080 0%, #0066cc 50%, #16f1be 100%);
   padding: 10px 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  will-change: padding, box-shadow;
-  contain: layout style;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .header--scrolled {
-  padding: 4px 0;
+  padding: 5px 0;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   background: linear-gradient(
     135deg,
@@ -34,7 +28,6 @@
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
-  contain: layout style;
 }
 
 /* Hero Section with Geometric Design */
@@ -46,33 +39,18 @@
   position: relative;
   height: 160px;
   opacity: 1;
-  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              margin-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
   overflow: hidden;
-  will-change: height, opacity;
-  contain: layout style paint;
-  transform: translateZ(0);
 }
 
 .header--scrolled .header__hero-section {
+  transform: scaleY(0);
   height: 0;
   margin-bottom: 0;
   opacity: 0;
   pointer-events: none;
-  visibility: hidden;
-  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-              margin-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 0s 0.35s;
-}
-
-/* When scrolling back up (not scrolled), add slight delay to opacity */
-.header:not(.header--scrolled) .header__hero-section {
-  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-              margin-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 0s;
 }
 
 .header__geometric-bg {
