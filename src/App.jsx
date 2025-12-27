@@ -122,7 +122,7 @@ const App = () => {
     // Existing informative blocks tuned to the portfolio theme
     about: {
       message:
-        "Tzoni is a Computer Science & Artificial Intelligence student at Kingston University, expecting to graduate in 2029. Tzoni loves building fast, accessible UIs and smart systems. Want to see experience, education, or jump to projects?",
+        "Tzoni is a Computer Science & Artificial Intelligence student at Kingston University, expecting to graduate in 2028. Currently working as IT Support Analyst at Keltbray and Software Developer at LitsAI Technologies. Want to see experience, education, or jump to projects?",
       options: ["Experience", "Education", "Projects", "Main Menu"],
       chatDisabled: true,
       path: (params) => {
@@ -142,7 +142,7 @@ const App = () => {
     },
     education: {
       message:
-        "Tzoni studies at Kingston University (expected graduation: 2029) and stays current by shipping projects and iterating fast — learning by doing. Curious about the stack Tzoni uses most?",
+        "Tzoni studies at Kingston University (expected graduation: 2028) and stays current by shipping projects and iterating fast — learning by doing. Curious about the stack Tzoni uses most?",
       options: ["Skills", "Projects", "Main Menu"],
       chatDisabled: true,
       path: (params) => {
@@ -178,7 +178,7 @@ const App = () => {
     },
     projects: {
       message:
-        "Tzoni's featured work includes Forkify, Mapty, PlumbingbyArmando, and FarAway. Want a quick tech rundown or contact info?",
+        "Tzoni's featured work includes Forkify, Mapty, PlumbingbyArmando, FarAway, and InknFiber. Want a quick tech rundown or contact info?",
       options: ["Skills", "Contact", "Main Menu"],
       chatDisabled: true,
       path: (params) => {
@@ -196,7 +196,7 @@ const App = () => {
     },
     skills: {
       message:
-        "Tzoni's toolkit includes React, JavaScript, HTML/CSS, Tailwind, Node.js, Express, MySQL, Git/GitHub, Vite, VS Code, plus some Python.",
+        "Tzoni's toolkit includes React, JavaScript, HTML/CSS, Tailwind, Node.js, Express, MySQL, Git/GitHub, expert-level Prompt Engineering (Claude AI Sonnet 4.5 & ChatGPT 4o), AI integration, automation, plus Python and ServiceNow.",
       options: ["Projects", "Contact", "Main Menu"],
       chatDisabled: true,
       path: (params) => {
@@ -255,6 +255,7 @@ const App = () => {
         "Mapty",
         "PlumbingbyArmando",
         "FarAway",
+        "InknFiber",
         "Back to Menu",
       ],
       chatDisabled: true,
@@ -268,6 +269,8 @@ const App = () => {
             return "project_plumbing";
           case "FarAway":
             return "project_faraway";
+          case "InknFiber":
+            return "project_inknfiber";
           case "Back to Menu":
             return "greet_user";
           default:
@@ -393,6 +396,36 @@ const App = () => {
             return "greet_user";
           default:
             return "project_faraway";
+        }
+      },
+    },
+    project_inknfiber: {
+      message:
+        "InknFiber: A modern web platform showcasing creative solutions built by Tzoni — featuring smooth UX, responsive design, and clean implementation.",
+      options: [
+        "View Portfolio Section",
+        "Tech Skills",
+        "Back to Projects",
+        "Main Menu",
+      ],
+      chatDisabled: true,
+      function: (params) => {
+        if (params.userInput === "View Portfolio Section") {
+          try {
+            setActiveSection && setActiveSection("portfolio");
+          } catch {}
+        }
+      },
+      path: (params) => {
+        switch (params.userInput) {
+          case "Tech Skills":
+            return "skills";
+          case "Back to Projects":
+            return "project_menu";
+          case "Main Menu":
+            return "greet_user";
+          default:
+            return "project_inknfiber";
         }
       },
     },

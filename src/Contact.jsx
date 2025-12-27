@@ -7,18 +7,33 @@ function Contact() {
       <p>If you’d like to get in touch, feel free to reach out via:</p>
       <ul className="contact-list">
         <li>
-          <a className="contact-link" href="mailto:Xspot1995@hotmail.com">
-            📧 Email: Xspot1995@hotmail.com
+          <a className="contact-link" href="mailto:tzonilitsai@icloud.com">
+            📧 Email: tzonilitsai@icloud.com
+          </a>
+        </li>
+        <li>
+          <a className="contact-link" href="tel:+447983571589">
+            📱 Mobile: +44 7983 571589
           </a>
         </li>
         <li>
           <a
             className="contact-link"
-            href="https://instagram.com/john.litsai"
+            href="https://github.com/Fanisimos"
             target="_blank"
             rel="noopener noreferrer"
           >
-            📸 Instagram: john.litsai
+            💻 GitHub: Fanisimos
+          </a>
+        </li>
+        <li>
+          <a
+            className="contact-link"
+            href="https://www.linkedin.com/in/tzoni-litsai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💼 LinkedIn: Tzoni Litsai
           </a>
         </li>
       </ul>

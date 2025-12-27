@@ -90,6 +90,22 @@ const techStack = [
       "High-level programming language for general-purpose programming",
     link: "https://docs.python.org/",
   },
+  {
+    name: "Claude AI Sonnet 4.5",
+    icon: pythonIcon, // Using python icon as placeholder for AI
+    bg: "#8b5cf6",
+    description:
+      "Expert-level prompt engineering with Claude AI for automation and intelligent workflows",
+    link: "https://www.anthropic.com/claude",
+  },
+  {
+    name: "ChatGPT 4o",
+    icon: pythonIcon, // Using python icon as placeholder for AI
+    bg: "#10a37f",
+    description:
+      "Advanced prompt engineering and AI integration for building smart applications",
+    link: "https://openai.com/chatgpt",
+  },
 ];
 
 console.log(techStack);

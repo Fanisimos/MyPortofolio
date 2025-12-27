@@ -12,9 +12,9 @@ const About = () => {
 
   // Stats data
   const stats = [
-    { label: "Projects Completed", value: 15, suffix: "+" },
-    { label: "Technologies Mastered", value: 10, suffix: "+" },
-    { label: "Years Learning", value: 2, suffix: "+" },
+    { label: "Projects Completed", value: 16, suffix: "+" },
+    { label: "Technologies Mastered", value: 13, suffix: "+" },
+    { label: "Years Experience", value: 2, suffix: "+" },
     { label: "Coffee Cups", value: 500, suffix: "+" },
   ];
 
@@ -26,17 +26,19 @@ const About = () => {
     { name: "CSS/SCSS", level: 88, color: "#264de4" },
     { name: "Python", level: 70, color: "#3776ab" },
     { name: "Git", level: 80, color: "#f05032" },
+    { name: "Prompt Engineering (Claude/ChatGPT)", level: 95, color: "#8b5cf6" },
+    { name: "AI Integration", level: 90, color: "#10a37f" },
   ];
 
   // Interests and hobbies
   const interests = [
     "🤖 Artificial Intelligence",
+    "💬 Prompt Engineering",
     "🌐 Web Development",
+    "⚡ Automation & Workflows",
     "📱 Mobile Apps",
     "🎮 Game Development",
-    "🎵 Music Production",
     "📚 Continuous Learning",
-    "🏃‍♂️ Running",
     "☕ Coffee Enthusiast",
   ];
 
@@ -107,7 +109,7 @@ const About = () => {
         <div className="about__hero">
           <div className="about__intro">
             <h2 className="about__title">
-              <span className="about__greeting">Hi, I'm John! 👋</span>
+              <span className="about__greeting">Hi, I'm Tzoni! 👋</span>
               <span className="about__subtitle">{typedText}</span>
               <span className="typing-cursor">|</span>
             </h2>
@@ -116,21 +118,19 @@ const About = () => {
               <p className="intro-text">
                 I'm a{" "}
                 <strong>
-                  Computer Science and Artificial Intelligence student
+                  Computer Science & Artificial Intelligence undergraduate
                 </strong>{" "}
-                with a passion for turning caffeine and chaos into clean,
-                functional web applications. I enjoy building fast, responsive,
-                and (hopefully) delightful digital experiences.
+                with hands-on experience supporting enterprise environments using ServiceNow, 
+                delivering customer-focused solutions, and building automation-driven software products. 
+                I specialize in building fast, accessible UIs and smart systems.
               </p>
 
               <p className="vision-text">
-                As I level up my skills through university and personal
-                projects, my long-term goal is to dive deeper into{" "}
-                <em>fullstack development</em> and explore how AI can enhance
-                both the user experience and the way we build software. Whether
-                it's automating the boring stuff or training models to act like
-                weird little digital coworkers, I'm genuinely excited to be part
-                of the AI-powered future.
+                With a strong interest in digital transformation, AI-enabled workflows, 
+                and customer success, I have proven ability to learn fast, collaborate globally, 
+                and translate technical concepts into business value. Currently working as an{" "}
+                <em>IT Support Analyst (ServiceNow)</em> at Keltbray and{" "}
+                <em>Software Developer</em> at LitsAI Technologies.
               </p>
             </div>
 
@@ -246,38 +246,50 @@ const About = () => {
           <h3 className="section-title">My Journey</h3>
           <div className="journey-timeline">
             <div className="timeline-item">
-              <div className="timeline-marker">🎓</div>
+              <div className="timeline-marker">💼</div>
               <div className="timeline-content">
-                <h4>Computer Science Student</h4>
+                <h4>IT Support Analyst (ServiceNow)</h4>
                 <p>
-                  Currently pursuing my degree with a focus on AI and software
-                  development
+                  Delivering technical support using ServiceNow platform at Keltbray, 
+                  managing incidents, requests, and workflows aligned with ITIL best practices
                 </p>
-                <span className="timeline-date">2022 - Present</span>
+                <span className="timeline-date">January 2024 - Present</span>
               </div>
             </div>
 
             <div className="timeline-item">
               <div className="timeline-marker">💻</div>
               <div className="timeline-content">
-                <h4>Self-Taught Developer</h4>
+                <h4>Software Developer</h4>
                 <p>
-                  Started my coding journey with web development and fell in
-                  love with creating digital solutions
+                  Building full-stack, AI-assisted web platforms at LitsAI Technologies, 
+                  managing requirements, development, deployment, and iteration end-to-end
                 </p>
-                <span className="timeline-date">2021 - Present</span>
+                <span className="timeline-date">November 2023 - Present</span>
+              </div>
+            </div>
+
+            <div className="timeline-item">
+              <div className="timeline-marker">🎓</div>
+              <div className="timeline-content">
+                <h4>BSc Computer Science & AI</h4>
+                <p>
+                  Studying at Kingston University, London with expected graduation in 2028. 
+                  Focusing on AI, software development, and digital transformation
+                </p>
+                <span className="timeline-date">September 2022 - 2028</span>
               </div>
             </div>
 
             <div className="timeline-item">
               <div className="timeline-marker">🚀</div>
               <div className="timeline-content">
-                <h4>First Projects</h4>
+                <h4>Journey Begins</h4>
                 <p>
-                  Built my first web applications and discovered the joy of
-                  bringing ideas to life through code
+                  Started professional development journey, diving into full-stack development 
+                  and AI-powered solutions
                 </p>
-                <span className="timeline-date">2022</span>
+                <span className="timeline-date">November 2023</span>
               </div>
             </div>
           </div>

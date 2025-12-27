@@ -35,8 +35,9 @@ Then open your browser at http://localhost:5173.
 📬 Contact
 If you want to connect or collaborate, feel free to:
 
-Reach out via the Contact section on the site
-
-Email: Xspot1995@hotmail.com
+- Reach out via the Contact section on the site
+- Email: tzonilitsai@icloud.com
+- GitHub: [Fanisimos](https://github.com/Fanisimos)
+- LinkedIn: [Tzoni Litsai](https://www.linkedin.com/in/tzoni-litsai)
 
 ```
