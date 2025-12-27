@@ -12,21 +12,29 @@ function Header({ onNavClick, activeSection }) {
   // Handle scroll effect for header and progress bar
   useEffect(() => {
     let ticking = false;
-    let lastScrollY = 0;
+    let lastScrollY = window.scrollY;
+    let lastScrollDirection = null;
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
+      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
       
-      // Only update if scroll position changed significantly
-      if (Math.abs(scrollY - lastScrollY) < 5) return;
+      // Only process if scroll changed significantly or direction changed
+      if (Math.abs(scrollY - lastScrollY) < 3 && scrollDirection === lastScrollDirection) return;
       
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const shouldBeScrolled = scrollY > 50;
+          // Use hysteresis to prevent flickering at threshold
+          // When scrolling down, switch at 50px
+          // When scrolling up, switch at 30px
+          const scrollThreshold = scrollDirection === 'down' ? 50 : 30;
+          const shouldBeScrolled = scrollY > scrollThreshold;
           
-          // Only update state if it actually changed
+          // Update state only when crossing the threshold
           setIsScrolled(prev => {
-            if (prev !== shouldBeScrolled) return shouldBeScrolled;
+            if (prev !== shouldBeScrolled) {
+              return shouldBeScrolled;
+            }
             return prev;
           });
 
@@ -37,6 +45,7 @@ function Header({ onNavClick, activeSection }) {
           setScrollProgress(progress);
 
           lastScrollY = scrollY;
+          lastScrollDirection = scrollDirection;
           ticking = false;
         });
 
@@ -45,7 +54,8 @@ function Header({ onNavClick, activeSection }) {
     };
 
     // Initial check
-    handleScroll();
+    const initialScrollY = window.scrollY;
+    setIsScrolled(initialScrollY > 50);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
