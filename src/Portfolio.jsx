@@ -4,7 +4,6 @@ import portfolioItems from "./portfolioItems.js";
 import Timer from "./showcaseComponents/Timer.jsx";
 import DarkMode from "./showcaseComponents/DarkMode.jsx";
 import Progress from "./showcaseComponents/Progress.jsx";
-import OptimizedImage from "./components/OptimizedImage.jsx";
 import "./Portfolio.css";
 
 // Enhanced Portfolio Item Component with memoization
@@ -79,16 +78,15 @@ const PortfolioItem = memo(({ item, index, onImageClick }) => {
       aria-label={`View ${item.title} project`}
     >
       <div className="portfolio-item__image-wrapper">
-        <OptimizedImage
+        <img
           src={item.image}
           alt={`${item.title} project screenshot`}
           className="portfolio-item__image"
           onClick={handleImageClick}
           loading={index < 2 ? "eager" : "lazy"}
-          priority={index < 2}
-          placeholder="blur"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          fallback="/logo.png"
+          onError={(e) => {
+            e.target.src = "/logo.png";
+          }}
         />
         <div className="portfolio-item__overlay">
           <div className="portfolio-item__actions">

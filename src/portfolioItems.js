@@ -1,19 +1,18 @@
 import FarAway from "./assets/FarAway.png";
 import Forkify from "./assets/Forkify.png";
 import Mapty from "./assets/Mapty.png";
-import PlumbingbyArmando from "./assets/PlumbingbyArmando.png";
-import InknFiber from "./assets/logo.png"; // Placeholder - replace with actual screenshot
+import inkNfiber from "./assets/logo.png"; // Placeholder - replace with actual screenshot
 
 const portfolioItems = [
   {
     id: 1,
-    title: "InknFiber",
+    title: "inkNfiber",
     description:
       "A premium full-stack e-commerce platform for custom apparel with interactive product designer using Fabric.js. Features include custom design tools, B2B portal, secure checkout with Stripe, order management, and admin dashboard. Built with Next.js 14, TypeScript, and PostgreSQL with comprehensive Row Level Security.",
-    image: InknFiber,
+    image: inkNfiber,
     link: "https://inknfiber.com/",
     category: "Web Development",
-    year: "2024",
+    year: "2025",
     technologies: ["Next.js 14", "TypeScript", "TailwindCSS", "Prisma", "PostgreSQL", "Stripe", "Clerk Auth", "Fabric.js", "Zustand", "Cloudinary"],
     github: null,
     featured: true,
@@ -41,7 +40,7 @@ const portfolioItems = [
     image: Forkify,
     link: "https://forkify-tzoni.netlify.app/",
     category: "Web Development",
-    year: "2023",
+    year: "2024",
     technologies: ["JavaScript", "HTML5", "SCSS", "Webpack", "API Integration"],
     github: "https://github.com/yourusername/forkify",
     featured: true,
@@ -55,7 +54,7 @@ const portfolioItems = [
     image: Mapty,
     link: "https://tzoni-mapty-v2-yourworkoutapp.netlify.app/",
     category: "Web Development",
-    year: "2023",
+    year: "2024",
     technologies: [
       "JavaScript",
       "Leaflet.js",

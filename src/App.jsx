@@ -178,7 +178,7 @@ const App = () => {
     },
     projects: {
       message:
-        "Tzoni's featured work includes Forkify, Mapty, PlumbingbyArmando, FarAway, and InknFiber. Want a quick tech rundown or contact info?",
+        "Tzoni's featured work includes Forkify, Mapty, PlumbingbyArmando, FarAway, and inkNfiber. Want a quick tech rundown or contact info?",
       options: ["Skills", "Contact", "Main Menu"],
       chatDisabled: true,
       path: (params) => {
@@ -401,7 +401,7 @@ const App = () => {
     },
     project_inknfiber: {
       message:
-        "InknFiber: A modern web platform showcasing creative solutions built by Tzoni — featuring smooth UX, responsive design, and clean implementation.",
+        "inkNfiber: A modern web platform showcasing creative solutions built by Tzoni — featuring smooth UX, responsive design, and clean implementation.",
       options: [
         "View Portfolio Section",
         "Tech Skills",

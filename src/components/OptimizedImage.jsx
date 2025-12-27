@@ -73,10 +73,10 @@ const OptimizedImage = ({
   // Set image source when in view
   useEffect(() => {
     if (isInView && src) {
-      const { fallback: fallbackSrc } = generateSources(src);
-      setCurrentSrc(fallbackSrc);
+      // Directly use the src without any transformation
+      setCurrentSrc(src);
     }
-  }, [isInView, src, generateSources]);
+  }, [isInView, src]);
 
   // Handle image load
   const handleLoad = useCallback(
