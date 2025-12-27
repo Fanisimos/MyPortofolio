@@ -196,7 +196,7 @@ const App = () => {
     },
     skills: {
       message:
-        "Tzoni's toolkit includes React, JavaScript, HTML/CSS, Tailwind, Node.js, Express, MySQL, Git/GitHub, expert-level Prompt Engineering (Claude AI Sonnet 4.5 & ChatGPT 4o), AI integration, automation, plus Python and ServiceNow.",
+        "Tzoni's toolkit includes React, JavaScript, HTML/CSS, Tailwind, Node.js, Express, MySQL, Git/GitHub, expert-level Prompt Engineering (Claude AI Sonnet 4.5 & ChatGPT 5.2), AI integration, automation, plus Python and ServiceNow.",
       options: ["Projects", "Contact", "Main Menu"],
       chatDisabled: true,
       path: (params) => {

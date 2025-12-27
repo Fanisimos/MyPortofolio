@@ -12,12 +12,23 @@ function Header({ onNavClick, activeSection }) {
   // Handle scroll effect for header and progress bar
   useEffect(() => {
     let ticking = false;
+    let lastScrollY = 0;
 
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+      
+      // Only update if scroll position changed significantly
+      if (Math.abs(scrollY - lastScrollY) < 5) return;
+      
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          setIsScrolled(scrollY > 50);
+          const shouldBeScrolled = scrollY > 50;
+          
+          // Only update state if it actually changed
+          setIsScrolled(prev => {
+            if (prev !== shouldBeScrolled) return shouldBeScrolled;
+            return prev;
+          });
 
           // Calculate scroll progress
           const totalHeight =
@@ -25,6 +36,7 @@ function Header({ onNavClick, activeSection }) {
           const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
           setScrollProgress(progress);
 
+          lastScrollY = scrollY;
           ticking = false;
         });
 

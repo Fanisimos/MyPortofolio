@@ -101,7 +101,7 @@ const techStack = [
     link: "https://www.anthropic.com/claude",
   },
   {
-    name: "ChatGPT 4o",
+    name: "ChatGPT 5.2",
     icon: openaiIcon,
     bg: "#10a37f",
     description:

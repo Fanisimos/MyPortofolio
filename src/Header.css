@@ -13,6 +13,9 @@
               background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   will-change: padding, box-shadow;
+  contain: layout style;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .header--scrolled {
@@ -31,6 +34,7 @@
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
+  contain: layout style;
 }
 
 /* Hero Section with Geometric Design */
@@ -47,6 +51,8 @@
               margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   will-change: height, opacity;
+  contain: layout style paint;
+  transform: translateZ(0);
 }
 
 .header--scrolled .header__hero-section {
@@ -54,6 +60,7 @@
   margin-bottom: 0;
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .header__geometric-bg {
