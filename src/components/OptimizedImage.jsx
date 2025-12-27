@@ -128,18 +128,10 @@ const OptimizedImage = ({
     return {};
   };
 
-  // Create responsive image sizes
+  // Create responsive image sizes - disabled for now since we don't have multiple versions
   const createSrcSet = (originalSrc) => {
-    if (!originalSrc) return "";
-
-    const ext = originalSrc.split('.').pop().toLowerCase();
-    const basePath = originalSrc.replace(`.${ext}`, '');
-
-    // Generate different sizes for responsive images
-    const sizes = [480, 768, 1024, 1280, 1600];
-    return sizes
-      .map(size => `${basePath}-${size}w.${ext} ${size}w`)
-      .join(", ");
+    // Just return the original src without trying to generate responsive versions
+    return "";
   };
 
   const containerStyle = {
@@ -187,20 +179,15 @@ const OptimizedImage = ({
       {/* Main image with WebP support */}
       {isInView && currentSrc && !hasError && (
         <picture>
-          {/* WebP source for supported browsers */}
-          <source srcSet={createSrcSet(webp)} type="image/webp" sizes={sizes} />
-
-          {/* Fallback for non-WebP browsers */}
+          {/* Fallback image - simplified without srcset */}
           <img
             src={currentSrc}
-            srcSet={createSrcSet(currentSrc)}
             alt={alt}
             style={imageStyle}
             loading={priority ? "eager" : loading}
             decoding="async"
             onLoad={handleLoad}
             onError={handleError}
-            sizes={sizes}
             width={width}
             height={height}
           />
