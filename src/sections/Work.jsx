@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
@@ -157,7 +157,7 @@ function ProjectCard({ project, index, total, progress, stacked }) {
               </div>
             </a>
           ) : (
-            <QrVisual />
+            <MapVisual />
           )}
         </div>
       </motion.article>
@@ -165,59 +165,68 @@ function ProjectCard({ project, index, total, progress, stacked }) {
   );
 }
 
-/** Custom animated visual for WorkshopConnect (no screenshot). */
-function QrVisual() {
-  const cells = useMemo(() => {
-    const n = 21;
-    let seed = 7;
-    const rand = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
-    const finder = (x, y) => {
-      const inBox = (ox, oy) => x >= ox && x < ox + 7 && y >= oy && y < oy + 7;
-      for (const [ox, oy] of [[0, 0], [n - 7, 0], [0, n - 7]]) {
-        if (inBox(ox, oy)) {
-          const dx = x - ox, dy = y - oy;
-          const ring = dx === 0 || dy === 0 || dx === 6 || dy === 6;
-          const core = dx >= 2 && dx <= 4 && dy >= 2 && dy <= 4;
-          return ring || core ? 1 : 0;
-        }
-      }
-      return null;
-    };
-    return Array.from({ length: n * n }, (_, k) => {
-      const x = k % n, y = Math.floor(k / n);
-      const f = finder(x, y);
-      return f ?? (rand() > 0.52 ? 1 : 0);
-    });
-  }, []);
+/** Custom animated visual for RiskRadar (no public screenshot yet). */
+function MapVisual() {
+  const heat = [
+    { x: 34, y: 42, s: 1.0 },
+    { x: 58, y: 30, s: 0.7 },
+    { x: 62, y: 62, s: 0.85 },
+    { x: 22, y: 70, s: 0.5 },
+    { x: 78, y: 48, s: 0.45 },
+  ];
+  const bars = [
+    { label: "Anti-social", w: 82 },
+    { label: "Vehicle", w: 54 },
+    { label: "Burglary", w: 31 },
+  ];
 
   return (
-    <div className="qr" aria-label="Illustration of QR-code attendance check-in" role="img">
-      <div className="qr__phone">
-        <div className="qr__label mono">Scan to check in</div>
-        <div className="qr__code">
-          {cells.map((on, k) => (
-            <span key={k} className={on ? "on" : ""} />
-          ))}
-          <div className="qr__scan" />
-        </div>
-        <div className="qr__meta">
-          <span className="mono">Workshop 04</span>
-          <span className="mono">14:02</span>
-        </div>
+    <div className="mapv" role="img" aria-label="Illustration of a crime heatmap with area comparison">
+      <svg className="mapv__roads" viewBox="0 0 400 275" preserveAspectRatio="none" aria-hidden="true">
+        <path className="mapv__river" d="M-10 200 C 80 170, 120 230, 210 190 S 330 120, 420 150" />
+        <path d="M0 60 L400 95" />
+        <path d="M0 140 L400 120" />
+        <path d="M60 0 L95 275" />
+        <path d="M180 0 L165 275" />
+        <path d="M290 0 L320 275" />
+        <path className="mapv__minor" d="M0 30 L400 40 M0 230 L400 250 M120 0 L130 275 M235 0 L245 275 M350 0 L360 275 M0 175 L400 200" />
+      </svg>
+
+      {heat.map((h, i) => (
+        <span
+          key={i}
+          className="mapv__heat"
+          style={{ left: `${h.x}%`, top: `${h.y}%`, "--s": h.s, animationDelay: `${i * 0.7}s` }}
+        />
+      ))}
+
+      <div className="mapv__search">
+        <span className="mapv__dot" /> Kingston upon Thames
       </div>
-      <div className="qr__toast">
-        <span className="qr__toast-icon">
-          <Check size={14} />
-        </span>
-        <div>
-          <strong>Attendance confirmed</strong>
-          <span>Student journey · verified</span>
-        </div>
+
+      <div className="mapv__panel">
+        <p className="mono">Area breakdown</p>
+        {bars.map((b, i) => (
+          <div key={b.label} className="mapv__bar">
+            <span>{b.label}</span>
+            <i>
+              <motion.b
+                initial={{ width: 0 }}
+                whileInView={{ width: `${b.w}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: EASE, delay: 0.3 + i * 0.12 }}
+              />
+            </i>
+          </div>
+        ))}
       </div>
-      <div className="qr__chip mono">E2E · organiser + student</div>
+
+      <div className="mapv__chip mono">● Live · UK Police API</div>
     </div>
   );
 }
+
+const Row = ({ as: Tag, ...props }) => <Tag {...props} />;
 
 function Archive() {
   const ref = useRef(null);
@@ -236,26 +245,27 @@ function Archive() {
   return (
     <div className="archive">
       <Reveal className="archive__head">
-        <span className="eyebrow">Earlier experiments</span>
-        <p>Where it started: projects from my first years of learning to build.</p>
+        <span className="eyebrow">More projects</span>
+        <p>Smaller builds and course projects from along the way.</p>
       </Reveal>
       <div ref={ref} className="archive__list" onPointerMove={onMove} onPointerLeave={() => setHovered(null)}>
         {archive.map((a, i) => (
           <Reveal key={a.title} delay={i * 0.06}>
-            <a
-              href={a.href}
-              target="_blank"
-              rel="noreferrer"
-              className="archive__row"
-              onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(i)}
+            <Row
+              {...(a.href ? { href: a.href, target: "_blank", rel: "noreferrer" } : {})}
+              as={a.href ? "a" : "div"}
+              className={`archive__row${a.href ? "" : " archive__row--static"}`}
+              onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(a.image ? i : null)}
             >
               <span className="archive__title">{a.title}</span>
               <span className="archive__kind">{a.kind}</span>
               <span className="archive__year mono">{a.year}</span>
-              <span className="archive__arrow">
-                <ArrowUpRight size={16} />
-              </span>
-            </a>
+              {a.href && (
+                <span className="archive__arrow">
+                  <ArrowUpRight size={16} />
+                </span>
+              )}
+            </Row>
           </Reveal>
         ))}
 

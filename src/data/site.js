@@ -3,6 +3,7 @@
 
 import kleinoraImg from "../assets/work/kleinora.jpg";
 import storefrontImg from "../assets/work/storefront.jpg";
+import energvImg from "../assets/work/energv.jpg";
 import forkifyImg from "../assets/work/forkify.jpg";
 import maptyImg from "../assets/work/mapty.jpg";
 import farAwayImg from "../assets/work/faraway.jpg";
@@ -69,6 +70,24 @@ export const projects = [
     accent: "#2dd4bf",
   },
   {
+    id: "energv",
+    title: "energV",
+    kind: "Publication platform · Client",
+    role: "Lead Developer · LitsAI",
+    summary:
+      "A boutique publication on energy, economics and society. I moved it off WordPress onto a fast static site that the author edits herself.",
+    highlights: [
+      "Migrated every article, interview and talk, with redirects so no old link breaks",
+      "Git-based CMS (Keystatic) with private preview links for reviewers, so the client publishes without touching code",
+      "Built-in search, newsletter and cookie-free analytics, all running on free tiers",
+    ],
+    tags: ["Astro", "Keystatic", "Markdoc", "Tailwind", "Netlify"],
+    image: energvImg,
+    href: "https://energv.com",
+    domain: "energv.com",
+    accent: "#6b8cff",
+  },
+  {
     id: "apparel-studio",
     title: "Apparel Studio",
     kind: "White-label commerce platform",
@@ -88,28 +107,47 @@ export const projects = [
     accent: "#a5b4fc",
   },
   {
-    id: "workshopconnect",
-    title: "WorkshopConnect",
-    kind: "Attendance MVP · University",
-    role: "Lead Developer",
+    id: "riskradar",
+    title: "RiskRadar",
+    kind: "UK crime-data explorer",
+    role: "Designer & Developer",
     summary:
-      "Workshop attendance with separate organiser and student journeys, confirmed by scanning a QR code.",
+      "Street-level UK crime on an interactive map, from the Police API to a heatmap in seconds. No sign-up and no database.",
     highlights: [
-      "Led an MVP built with AI-assisted development",
-      "Automated end-to-end tests plus coordinated manual checks across both roles",
-      "Set test steps and readiness criteria for the team",
+      "Leaflet map with a heatmap layer over live UK Police API data",
+      "Filters, category breakdowns, trends and side-by-side area comparison with safety reports",
+      "Privacy-first: location stays in the browser and nothing is stored",
     ],
-    tags: ["AI-assisted dev", "E2E testing", "QR flows"],
-    image: null, // rendered as a custom visual
-    href: null,
-    domain: "University project",
-    accent: "#d4ff4f",
+    tags: ["Next.js", "TypeScript", "Leaflet", "UK Police API", "Tailwind"],
+    image: null, // rendered as a custom map visual
+    href: null, // add the live URL here when it's deployed
+    domain: "riskradar",
+    accent: "#ff7a59",
+  },
+  {
+    id: "mapty",
+    title: "Mapty 2.0",
+    kind: "First complete project",
+    role: "Where it started",
+    summary:
+      "The first project I took all the way, and still the one I'm proudest of. I rebuilt a map-based workout tracker from scratch in React and TypeScript, then pushed it well past the brief.",
+    highlights: [
+      "A desktop-style window manager built from scratch: drag, resize from any edge, minimise, maximise, z-ordering and a taskbar",
+      "Log runs and rides on a Leaflet map with geolocation, with live pace, speed and calorie maths",
+      "Achievement levels from Beginner to Legend, persisted between sessions",
+    ],
+    tags: ["React", "TypeScript", "Leaflet", "Geolocation", "Vite"],
+    image: maptyImg,
+    href: "https://tzoni-mapty-v2-yourworkoutapp.netlify.app/",
+    domain: "mapty",
+    cta: "Open Mapty",
+    accent: "#5bd6a0",
   },
 ];
 
 export const archive = [
+  { title: "WorkshopConnect", kind: "QR attendance MVP · led the team", year: "Uni", href: null, image: null },
   { title: "Forkify", kind: "Recipe search & bookmarking", year: "2024", href: "https://forkify-tzoni.netlify.app/", image: forkifyImg },
-  { title: "Mapty", kind: "Map-based workout tracker", year: "2024", href: "https://tzoni-mapty-v2-yourworkoutapp.netlify.app/", image: maptyImg },
   { title: "FarAway", kind: "Trip packing list in React", year: "2023", href: "https://tzoni-thefaraway.netlify.app/", image: farAwayImg },
 ];
 
@@ -139,7 +177,7 @@ export const experience = [
     title: "Founder & Lead Developer",
     org: "LitsAI Technologies",
     where: "Freelance · UK & US",
-    body: "I build custom software and AI-integrated systems for businesses, connecting what users need with interfaces, application logic and third-party services. Recent work includes a site refresh for energV.",
+    body: "I build custom software and AI-integrated systems for businesses, connecting what users need with interfaces, application logic and third-party services. Recent work includes the energV publication platform.",
     current: true,
   },
   {
@@ -207,7 +245,7 @@ export const faq = [
   },
   {
     q: "What has Tzoni shipped?",
-    a: "Kleinora (a multi-tenant booking SaaS with a Greek-language AI receptionist), Apparel Studio (a white-label e-commerce platform with a custom design editor) and WorkshopConnect (a QR attendance MVP).",
+    a: "Kleinora (a multi-tenant booking SaaS with a Greek-language AI receptionist), energV (a publication platform moved off WordPress), Apparel Studio (white-label e-commerce with a design editor), RiskRadar (a UK crime-data map) and Mapty 2.0, Tzoni's first complete project.",
   },
   {
     q: "What's the stack?",
