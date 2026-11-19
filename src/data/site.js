@@ -80,7 +80,7 @@ export const projects = [
       "B2B wholesale workflows and responsive sales charts",
       "Reusable UI component system on a typed Prisma + PostgreSQL backend",
     ],
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Stripe", "Tailwind"],
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Stripe", "Clerk", "Fabric.js", "Tailwind"],
     image: inknfiberImg,
     href: "https://inknfiber.com",
     domain: "inknfiber.com",
@@ -107,8 +107,8 @@ export const projects = [
 ];
 
 export const archive = [
-  { title: "Forkify", kind: "Recipe search & bookmarking", year: "2023", href: "https://forkify-tzoni.netlify.app/", image: forkifyImg },
-  { title: "Mapty", kind: "Map-based workout tracker", year: "2023", href: "https://tzoni-mapty-v2-yourworkoutapp.netlify.app/", image: maptyImg },
+  { title: "Forkify", kind: "Recipe search & bookmarking", year: "2024", href: "https://forkify-tzoni.netlify.app/", image: forkifyImg },
+  { title: "Mapty", kind: "Map-based workout tracker", year: "2024", href: "https://tzoni-mapty-v2-yourworkoutapp.netlify.app/", image: maptyImg },
   { title: "FarAway", kind: "Trip packing list in React", year: "2023", href: "https://tzoni-thefaraway.netlify.app/", image: farAwayImg },
 ];
 
