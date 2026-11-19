@@ -1,42 +1,32 @@
-# 💻 React + Vite Portfolio
+# Tzoni Litsai — Portfolio
 
-Welcome to **my personal developer portfolio** — built with **React** and **Vite** for performance, scalability, and a smooth development experience.
+Personal site for Tzoni Litsai, software developer and founder of LitsAI Technologies.
 
-## 📂 What’s Inside
+**Stack:** React 18 · Vite · [Motion](https://motion.dev) (animation) · [Lenis](https://lenis.darkroom.engineering) (smooth scroll) · plain CSS with design tokens.
 
-This project showcases **my favorite and most polished projects** — real-world examples that reflect my journey, growth, and areas of interest.
-
-You’ll find:
-
-- 🔹 Interactive UI components (React + CSS)
-- 🔹 Real projects from courses and personal experiments
-- 🔹 Skills section with live code examples
-- 🔹 Modular structure using reusable components
-- 🔹 Smooth animations and responsive design
-
-## ⚙️ Tech Stack
-
-- ⚛️ React
-- ⚡ Vite
-- 🎨 CSS (custom + utility styling)
-- 🌐 Hosted on Netlify
-
-## 🚀 How to Run It Locally
+## Run locally
 
 ```bash
-git clone https://github.com/Fanisimos/MyPortofolio.git
-cd myPortofolio
 npm install
-npm run dev
+npm run dev      # http://localhost:5173
+npm run build    # production build → dist/
+```
 
+## Editing content
 
-Then open your browser at http://localhost:5173.
+All copy lives in **`src/data/site.js`**: profile, projects, experience, stack, stats and the ⌘K quick answers. You shouldn't need to touch components to update the site.
 
-📬 Contact
-If you want to connect or collaborate, feel free to:
+Project screenshots live in `src/assets/work/` (16:10-ish JPEGs, ~1600px wide).
 
-Reach out via the Contact section on the site
-
-Email: Xspot1995@hotmail.com
+## Structure
 
 ```
+src/
+  data/site.js          content
+  styles/globals.css    tokens, type, buttons, shared effects
+  components/           Nav, CommandMenu (⌘K), motion primitives, icons
+  sections/             Hero, Work, About, Experience, Stack, Contact (+ footer)
+  hooks/                smooth scroll, active section, spotlight, clock, copy email
+```
+
+Animations respect `prefers-reduced-motion`.

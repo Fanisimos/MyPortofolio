@@ -1,0 +1,123 @@
+.exp__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(48px, 8vw, 120px);
+  align-items: start;
+}
+
+.exp__head {
+  position: sticky;
+  top: 120px;
+  display: grid;
+  gap: 24px;
+}
+
+.edu {
+  margin-top: 16px;
+  padding: 24px;
+  display: grid;
+  gap: 6px;
+}
+.edu__title {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+.edu__org {
+  color: var(--text-2);
+  font-size: 14px;
+}
+.edu__note {
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline {
+  position: relative;
+  padding-left: 44px;
+}
+.timeline__list {
+  list-style: none;
+  display: grid;
+  gap: clamp(40px, 6vw, 72px);
+}
+
+.timeline__rail {
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--line-strong);
+}
+.timeline__fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: top;
+  background: linear-gradient(180deg, var(--accent), rgba(212, 255, 79, 0.2));
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.timeline__item {
+  position: relative;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: -44px;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--line-strong);
+}
+
+.timeline__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+.timeline__badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--accent);
+  background: rgba(212, 255, 79, 0.08);
+  border: 1px solid rgba(212, 255, 79, 0.25);
+}
+
+.timeline__title {
+  margin-top: 12px;
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+.timeline__org {
+  margin-top: 6px;
+  font-size: 15px;
+}
+.timeline__org span {
+  color: var(--text-3);
+}
+.timeline__body {
+  margin-top: 14px;
+  color: var(--text-2);
+  max-width: 56ch;
+}
+
+@media (max-width: 900px) {
+  .exp__grid {
+    grid-template-columns: 1fr;
+  }
+  .exp__head {
+    position: static;
+  }
+}
