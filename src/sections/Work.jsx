@@ -42,8 +42,8 @@ export default function Work() {
           <WordReveal className="display" text={"Products in\n*production.*"} />
           <Reveal delay={0.2}>
             <p className="lede">
-              Live SaaS, client commerce and AI voice agents: real products used by real
-              businesses, built from first commit to deploy.
+              Live SaaS, white-label commerce and AI voice agents, built from first commit
+              to deploy.
             </p>
           </Reveal>
         </header>
@@ -125,7 +125,7 @@ function ProjectCard({ project, index, total, progress, stacked }) {
             </ul>
             {project.href && (
               <a className="btn btn--ghost btn--sm" href={project.href} target="_blank" rel="noreferrer">
-                Visit {project.domain}
+                {project.cta ?? `Visit ${project.domain}`}
                 <ArrowSwap />
               </a>
             )}

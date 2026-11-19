@@ -2,7 +2,7 @@
 // Edit this file to update anything you see on the page.
 
 import kleinoraImg from "../assets/work/kleinora.jpg";
-import inknfiberImg from "../assets/work/inknfiber.jpg";
+import storefrontImg from "../assets/work/storefront.jpg";
 import forkifyImg from "../assets/work/forkify.jpg";
 import maptyImg from "../assets/work/mapty.jpg";
 import farAwayImg from "../assets/work/faraway.jpg";
@@ -69,22 +69,23 @@ export const projects = [
     accent: "#2dd4bf",
   },
   {
-    id: "inknfiber",
-    title: "inkNfiber",
-    kind: "Full-stack e-commerce · US client",
-    role: "Lead Developer",
+    id: "apparel-studio",
+    title: "Apparel Studio",
+    kind: "White-label commerce platform",
+    role: "Lead Developer · LitsAI",
     summary:
-      "End-to-end commerce for a US custom-apparel brand: storefront, customer accounts, admin, inventory, orders and Stripe checkout.",
+      "A ready-to-brand storefront for custom-apparel businesses: shop, customer accounts, B2B wholesale, admin and Stripe checkout, plus a step-by-step design studio.",
     highlights: [
-      "Fabric.js product customisation editor with careful focus, hover and disabled states",
-      "B2B wholesale workflows and responsive sales charts",
+      "Fabric.js customisation editor: pick a style and colour, upload artwork, add text",
+      "B2B wholesale workflows, inventory, orders and responsive sales charts",
       "Reusable UI component system on a typed Prisma + PostgreSQL backend",
     ],
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Stripe", "Clerk", "Fabric.js", "Tailwind"],
-    image: inknfiberImg,
-    href: "https://inknfiber.com",
-    domain: "inknfiber.com",
-    accent: "#f43f5e",
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Stripe", "Fabric.js", "Tailwind"],
+    image: storefrontImg,
+    href: "https://e-commerce-tzoni.netlify.app/customize/t-shirt/select",
+    domain: "e-commerce-tzoni.netlify.app",
+    cta: "Try the live demo",
+    accent: "#a5b4fc",
   },
   {
     id: "workshopconnect",
@@ -115,7 +116,7 @@ export const archive = [
 export const stats = [
   { value: "2022", label: "Shipping production code since" },
   { value: "UK + US", label: "Businesses served" },
-  { value: "3", label: "Live client & SaaS products" },
+  { value: "24/7", label: "AI receptionist taking bookings" },
   { value: "4", label: "Languages spoken" },
 ];
 
@@ -138,7 +139,7 @@ export const experience = [
     title: "Founder & Lead Developer",
     org: "LitsAI Technologies",
     where: "Freelance · UK & US",
-    body: "I build custom software and AI-integrated systems for businesses, connecting what users need with interfaces, application logic and third-party services. Clients include inkNfiber and energV.",
+    body: "I build custom software and AI-integrated systems for businesses, connecting what users need with interfaces, application logic and third-party services. Recent work includes a site refresh for energV.",
     current: true,
   },
   {
@@ -206,7 +207,7 @@ export const faq = [
   },
   {
     q: "What has Tzoni shipped?",
-    a: "Kleinora (a multi-tenant booking SaaS with a Greek-language AI receptionist), inkNfiber (full-stack e-commerce for a US client) and WorkshopConnect (a QR attendance MVP).",
+    a: "Kleinora (a multi-tenant booking SaaS with a Greek-language AI receptionist), Apparel Studio (a white-label e-commerce platform with a custom design editor) and WorkshopConnect (a QR attendance MVP).",
   },
   {
     q: "What's the stack?",
