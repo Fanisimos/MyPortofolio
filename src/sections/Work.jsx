@@ -8,7 +8,6 @@ import {
   useTransform,
 } from "motion/react";
 import { archive, projects } from "../data/site";
-import { useSpotlight } from "../hooks/useSpotlight";
 import { Reveal, WordReveal } from "../components/motion";
 import { ArrowSwap, ArrowUpRight, Check } from "../components/icons";
 import "./Work.css";
@@ -69,7 +68,6 @@ export default function Work() {
 
 function ProjectCard({ project, index, total, progress, stacked }) {
   const ref = useRef(null);
-  const onSpot = useSpotlight();
 
   // Card shrinks & dims as the next one slides over it
   const targetScale = 1 - (total - index - 1) * 0.045;
@@ -83,9 +81,8 @@ function ProjectCard({ project, index, total, progress, stacked }) {
   return (
     <div ref={ref} className="work__item" style={{ "--i": index }}>
       <motion.article
-        className="pcard card spotlight"
+        className="pcard card"
         style={{ scale, "--accent-p": project.accent }}
-        onPointerMove={onSpot}
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}

@@ -27,12 +27,16 @@
   padding: clamp(24px, 3.4vw, 44px);
   overflow: hidden;
   transform-origin: 50% 0%;
+  /* own GPU layer: scaling while scrolling is a cheap transform, not a repaint */
+  will-change: transform;
+  backface-visibility: hidden;
   box-shadow:
     0 -30px 80px -40px rgba(0, 0, 0, 0.9),
     0 40px 100px -40px rgba(0, 0, 0, 0.8);
 }
 
 .pcard__dim {
+  will-change: opacity;
   position: absolute;
   inset: 0;
   z-index: 5;
@@ -44,14 +48,17 @@
 .pcard__glow {
   position: absolute;
   z-index: -1;
-  right: -10%;
-  bottom: -40%;
-  width: 70%;
+  right: -25%;
+  bottom: -60%;
+  width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--accent-p);
-  opacity: 0.13;
-  filter: blur(90px);
+  /* soft glow from a gradient instead of filter: blur() (much cheaper to scroll) */
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent-p) 16%, transparent),
+    transparent
+  );
   pointer-events: none;
 }
 
@@ -177,7 +184,7 @@
     transform 0.8s var(--ease-out),
     box-shadow 0.8s var(--ease-out);
 }
-.pcard:hover .browser {
+.browser:hover {
   transform: translateY(-6px) rotate(-0.4deg);
   box-shadow:
     0 0 0 6px rgba(255, 255, 255, 0.04),
@@ -215,6 +222,7 @@
   overflow: hidden;
 }
 .browser__view img {
+  will-change: transform;
   width: 100%;
   height: 110%;
   margin-top: -5%;
@@ -269,7 +277,6 @@
     rgba(255, 200, 80, 0.18) 55%,
     transparent 70%
   );
-  mix-blend-mode: screen;
   animation: heat 5s ease-in-out infinite;
 }
 @keyframes heat {
@@ -285,9 +292,8 @@
   gap: 8px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(20, 20, 26, 0.85);
+  background: rgba(20, 20, 26, 0.94);
   border: 1px solid var(--line-strong);
-  backdrop-filter: blur(10px);
   font-size: 12.5px;
 }
 .mapv__dot {
@@ -305,9 +311,8 @@
   width: min(220px, 48%);
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(20, 20, 26, 0.88);
+  background: rgba(20, 20, 26, 0.94);
   border: 1px solid var(--line-strong);
-  backdrop-filter: blur(10px);
   box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.9);
   animation: float 6s ease-in-out infinite;
 }
